@@ -7,6 +7,7 @@
 //
 
 #import "WeekOfYear.h"
+#import "Course.h"
 
 @implementation WeekOfYear
 

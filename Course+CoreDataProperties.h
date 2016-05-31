@@ -17,10 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *rooms;
-@property (nullable, nonatomic, retain) NSNumber *year;
+@property (nullable, nonatomic, retain) NSString *teachers;
 @property (nullable, nonatomic, retain) NSNumber *time;
 @property (nullable, nonatomic, retain) NSNumber *weekday;
-@property (nullable, nonatomic, retain) NSString *teachers;
+@property (nullable, nonatomic, retain) NSNumber *year;
 @property (nullable, nonatomic, retain) NSOrderedSet<WeekOfYear *> *week_of_year;
 
 @end

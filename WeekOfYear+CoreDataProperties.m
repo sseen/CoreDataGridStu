@@ -14,5 +14,6 @@
 @implementation WeekOfYear (CoreDataProperties)
 
 @dynamic weekOfYear;
+@dynamic course;
 
 @end

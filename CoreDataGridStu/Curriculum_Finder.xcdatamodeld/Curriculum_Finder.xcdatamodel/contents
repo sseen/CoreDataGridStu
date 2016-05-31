@@ -7,13 +7,14 @@
         <attribute name="time" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="weekday" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="week_of_year" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="WeekOfYear" syncable="YES"/>
+        <relationship name="week_of_year" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="WeekOfYear" inverseName="course" inverseEntity="WeekOfYear" syncable="YES"/>
     </entity>
     <entity name="WeekOfYear" representedClassName="WeekOfYear" syncable="YES">
         <attribute name="weekOfYear" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="course" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Course" inverseName="week_of_year" inverseEntity="Course" syncable="YES"/>
     </entity>
     <elements>
         <element name="Course" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="WeekOfYear" positionX="-54" positionY="36" width="128" height="60"/>
+        <element name="WeekOfYear" positionX="288" positionY="18" width="128" height="73"/>
     </elements>
 </model>

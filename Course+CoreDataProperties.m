@@ -15,10 +15,10 @@
 
 @dynamic name;
 @dynamic rooms;
-@dynamic year;
+@dynamic teachers;
 @dynamic time;
 @dynamic weekday;
-@dynamic teachers;
+@dynamic year;
 @dynamic week_of_year;
 
 @end
