@@ -13,6 +13,14 @@
 		926D5BB21CFD33AD00A1D074 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 926D5BB01CFD33AD00A1D074 /* Main.storyboard */; };
 		926D5BB41CFD33AD00A1D074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 926D5BB31CFD33AD00A1D074 /* Assets.xcassets */; };
 		926D5BB71CFD33AD00A1D074 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 926D5BB51CFD33AD00A1D074 /* LaunchScreen.storyboard */; };
+		926D5BBF1CFD347600A1D074 /* seed.json in Resources */ = {isa = PBXBuildFile; fileRef = 926D5BBE1CFD347600A1D074 /* seed.json */; };
+		926D5BC11CFD37AE00A1D074 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 926D5BC01CFD37AE00A1D074 /* CoreData.framework */; };
+		926D5BC41CFD398900A1D074 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BC31CFD398900A1D074 /* CoreDataStack.m */; };
+		926D5BC71CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BC51CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodeld */; };
+		926D5BD01CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BC91CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.m */; };
+		926D5BD11CFD61BA00A1D074 /* WeekOfYear.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BCB1CFD61BA00A1D074 /* WeekOfYear.m */; };
+		926D5BD21CFD61BA00A1D074 /* Course+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BCD1CFD61BA00A1D074 /* Course+CoreDataProperties.m */; };
+		926D5BD31CFD61BA00A1D074 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BCF1CFD61BA00A1D074 /* Course.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +34,19 @@
 		926D5BB31CFD33AD00A1D074 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		926D5BB61CFD33AD00A1D074 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		926D5BB81CFD33AD00A1D074 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		926D5BBE1CFD347600A1D074 /* seed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = seed.json; sourceTree = SOURCE_ROOT; };
+		926D5BC01CFD37AE00A1D074 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		926D5BC21CFD398900A1D074 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
+		926D5BC31CFD398900A1D074 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
+		926D5BC61CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Curriculum_Finder.xcdatamodel; sourceTree = "<group>"; };
+		926D5BC81CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeekOfYear+CoreDataProperties.h"; sourceTree = "<group>"; };
+		926D5BC91CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WeekOfYear+CoreDataProperties.m"; sourceTree = "<group>"; };
+		926D5BCA1CFD61BA00A1D074 /* WeekOfYear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekOfYear.h; sourceTree = "<group>"; };
+		926D5BCB1CFD61BA00A1D074 /* WeekOfYear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekOfYear.m; sourceTree = "<group>"; };
+		926D5BCC1CFD61BA00A1D074 /* Course+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Course+CoreDataProperties.h"; sourceTree = "<group>"; };
+		926D5BCD1CFD61BA00A1D074 /* Course+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Course+CoreDataProperties.m"; sourceTree = "<group>"; };
+		926D5BCE1CFD61BA00A1D074 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		926D5BCF1CFD61BA00A1D074 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				926D5BC11CFD37AE00A1D074 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +64,15 @@
 		926D5B9B1CFD33AD00A1D074 = {
 			isa = PBXGroup;
 			children = (
+				926D5BC81CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.h */,
+				926D5BC91CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.m */,
+				926D5BCA1CFD61BA00A1D074 /* WeekOfYear.h */,
+				926D5BCB1CFD61BA00A1D074 /* WeekOfYear.m */,
+				926D5BCC1CFD61BA00A1D074 /* Course+CoreDataProperties.h */,
+				926D5BCD1CFD61BA00A1D074 /* Course+CoreDataProperties.m */,
+				926D5BCE1CFD61BA00A1D074 /* Course.h */,
+				926D5BCF1CFD61BA00A1D074 /* Course.m */,
+				926D5BC01CFD37AE00A1D074 /* CoreData.framework */,
 				926D5BA61CFD33AD00A1D074 /* CoreDataGridStu */,
 				926D5BA51CFD33AD00A1D074 /* Products */,
 			);
@@ -58,6 +89,7 @@
 		926D5BA61CFD33AD00A1D074 /* CoreDataGridStu */ = {
 			isa = PBXGroup;
 			children = (
+				926D5BBE1CFD347600A1D074 /* seed.json */,
 				926D5BAA1CFD33AD00A1D074 /* AppDelegate.h */,
 				926D5BAB1CFD33AD00A1D074 /* AppDelegate.m */,
 				926D5BAD1CFD33AD00A1D074 /* ViewController.h */,
@@ -67,6 +99,9 @@
 				926D5BB51CFD33AD00A1D074 /* LaunchScreen.storyboard */,
 				926D5BB81CFD33AD00A1D074 /* Info.plist */,
 				926D5BA71CFD33AD00A1D074 /* Supporting Files */,
+				926D5BC21CFD398900A1D074 /* CoreDataStack.h */,
+				926D5BC31CFD398900A1D074 /* CoreDataStack.m */,
+				926D5BC51CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodeld */,
 			);
 			path = CoreDataGridStu;
 			sourceTree = "<group>";
@@ -138,6 +173,7 @@
 			files = (
 				926D5BB71CFD33AD00A1D074 /* LaunchScreen.storyboard in Resources */,
 				926D5BB41CFD33AD00A1D074 /* Assets.xcassets in Resources */,
+				926D5BBF1CFD347600A1D074 /* seed.json in Resources */,
 				926D5BB21CFD33AD00A1D074 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,9 +185,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				926D5BC71CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodeld in Sources */,
 				926D5BAF1CFD33AD00A1D074 /* ViewController.m in Sources */,
+				926D5BD21CFD61BA00A1D074 /* Course+CoreDataProperties.m in Sources */,
 				926D5BAC1CFD33AD00A1D074 /* AppDelegate.m in Sources */,
+				926D5BD31CFD61BA00A1D074 /* Course.m in Sources */,
+				926D5BD01CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.m in Sources */,
 				926D5BA91CFD33AD00A1D074 /* main.m in Sources */,
+				926D5BC41CFD398900A1D074 /* CoreDataStack.m in Sources */,
+				926D5BD11CFD61BA00A1D074 /* WeekOfYear.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +346,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		926D5BC51CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				926D5BC61CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodel */,
+			);
+			currentVersion = 926D5BC61CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodel */;
+			path = Curriculum_Finder.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 926D5B9C1CFD33AD00A1D074 /* Project object */;
 }

@@ -7,8 +7,17 @@
 //
 
 #import "AppDelegate.h"
+#import "CoreDataStack.h"
+#import <CoreData/CoreData.h>
+
+#import "Course+CoreDataProperties.h"
+#import "Course.h"
+
+#import "WeekOfYear.h"
+#import "WeekOfYear+CoreDataProperties.h"
 
 @interface AppDelegate ()
+@property (nonatomic, strong) CoreDataStack* coreDataStack;
 
 @end
 
@@ -17,29 +26,60 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [self importJSONSeedDataIfNeeded];
+    
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+- (void)importJSONSeedDataIfNeeded {
+    self.coreDataStack = [[CoreDataStack alloc] init];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Course"];
+    NSError *error;
+    NSInteger results = [_coreDataStack.context countForFetchRequest:fetchRequest error:&error];
+    
+    if (results == 0) {
+        [self importJSONSeedData];
+    }
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+- (void)importJSONSeedData {
+    NSURL *jsonURL = [[NSBundle mainBundle] URLForResource:@"seed" withExtension:@"json"];
+    NSData *jsonData = [NSData dataWithContentsOfURL:jsonURL];
+    NSEntityDescription *courseEntity = [NSEntityDescription entityForName:@"Course" inManagedObjectContext:self.coreDataStack.context];
+    NSEntityDescription *weekOfYearEntity = [NSEntityDescription entityForName:@"WeekOfYear" inManagedObjectContext:self.coreDataStack.context];
+    
+    NSError *error;
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                             options:NSJSONReadingAllowFragments
+                                                               error:&error];
+    NSArray *jsonArray = jsonDict[@"activitys"];
+    
+    for (NSDictionary *dic in jsonArray) {
+        NSArray *innerArray = dic[@"activities"];
+        NSString *name = dic[@"course_name"];
+        for (NSDictionary *innerDic in innerArray) {
+            Course *course = [[Course alloc] initWithEntity:courseEntity insertIntoManagedObjectContext:_coreDataStack.context];
+            course.name = name;
+            NSString *time = innerDic[@"time"];
+            NSInteger intTime = [[time substringToIndex:[time rangeOfString:@"-"].location] integerValue];
+            course.time = [NSNumber numberWithInteger:intTime];
+            course.rooms = innerDic[@"rooms"][0];
+            course.teachers = innerDic[@"teachers"][0];
+            course.weekday = [NSNumber numberWithInteger:[innerDic[@"weekday"] integerValue]];
+            
+            NSArray *weekOfYearArray = innerDic[@"week_of_year"];
+            WeekOfYear *weekoy = [[WeekOfYear alloc] initWithEntity:weekOfYearEntity insertIntoManagedObjectContext:_coreDataStack.context];
+            NSMutableOrderedSet *mutableOrderSet = [NSMutableOrderedSet orderedSet];
+            for (NSString *item in weekOfYearArray) {
+                weekoy.weekOfYear = [NSNumber numberWithInteger:[item integerValue]];
+                [mutableOrderSet addObject:weekoy];
+            }
+            course.week_of_year = mutableOrderSet;
+            [_coreDataStack saveContext];
+        }
+        
+    }
 }
 
 @end
