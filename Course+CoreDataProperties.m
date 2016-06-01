@@ -21,4 +21,16 @@
 @dynamic year;
 @dynamic week_of_year;
 
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"{name=%@, rooms=%@, teachers=%@, time=%@, weekday=%@, year=%@}",
+            self.name,
+            self.rooms,
+            self.teachers,
+            self.time,
+            self.weekday,
+            self.year
+            ];
+}
+
 @end

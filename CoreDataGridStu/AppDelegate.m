@@ -30,6 +30,8 @@
     
     [self importJSONSeedDataIfNeeded];
     
+    [self fetchManyInfoUseTag];
+    
     return YES;
 }
 
@@ -42,8 +44,6 @@
     if (results == 0) {
         [self importJSONSeedData];
     }
-    
-    self.courseFetchResultsController;
 }
 
 - (void)importJSONSeedData {
@@ -87,13 +87,14 @@
                 if (index == NSNotFound) {
                     
                     WeekOfYear *weekoy = [[WeekOfYear alloc] initWithEntity:weekOfYearEntity insertIntoManagedObjectContext:_coreDataStack.context];
+                    
                     weekoy.weekOfYear = [NSNumber numberWithInteger:[item integerValue]];
 //                    
-//                    NSError *error;
+                    NSError *error;
                     [_coreDataStack saveContext];
-//                    NSLog(@"week of year: %@", error);
+                    NSLog(@"week of year: %@", error);
                     [_fetchedResultsController performFetch:&error];
-//                    NSLog(@"week of year fetch : %@", error);
+                    NSLog(@"week of year fetch : %@", error);
                 }
                 
                 [mutableOrderSet addObject:[self fetchWeekOfYear:item]];
@@ -102,8 +103,6 @@
             //
             course.week_of_year = mutableOrderSet;
             [_coreDataStack saveContext];
-            self.fetchedResultsController;
-            self.courseFetchResultsController;
         }
         
     }
@@ -187,6 +186,24 @@
     } else {
         return  nil;
     }
+}
+
+- (void)fetchManyInfoUseTag {
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Course"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY week_of_year.weekOfYear == %@", @"27"];
+    NSSortDescriptor *sortDesc = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:YES];
+    NSSortDescriptor *sortDesc2 = [[NSSortDescriptor alloc] initWithKey:@"weekday" ascending:YES];
+    
+    [fetch setSortDescriptors:@[sortDesc, sortDesc2]];
+    [fetch setPredicate:predicate];
+    
+    NSError *error ;
+    NSArray *obj = [_coreDataStack.context executeFetchRequest:fetch error:&error];
+    
+    for (Course *course in obj) {
+        NSLog(@"%@\n", course.description);
+    }
+    
 }
 
 @end
