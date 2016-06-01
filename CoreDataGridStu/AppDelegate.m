@@ -61,6 +61,7 @@
     for (NSDictionary *dic in jsonArray) {
         NSArray *innerArray = dic[@"activities"];
         NSString *name = dic[@"course_name"];
+        // 有几条就插几条 相同课程的纪录
         for (NSDictionary *innerDic in innerArray) {
             
             
@@ -83,30 +84,26 @@
                     return ([[(WeekOfYear *)obj weekOfYear] integerValue] == item.integerValue);
                 }];
                 //
-                
-                WeekOfYear *weekoy = [[WeekOfYear alloc] initWithEntity:weekOfYearEntity insertIntoManagedObjectContext:_coreDataStack.context];
-                weekoy.weekOfYear = [NSNumber numberWithInteger:[item integerValue]];
                 if (index == NSNotFound) {
-                    NSError *error;
+                    
+                    WeekOfYear *weekoy = [[WeekOfYear alloc] initWithEntity:weekOfYearEntity insertIntoManagedObjectContext:_coreDataStack.context];
+                    weekoy.weekOfYear = [NSNumber numberWithInteger:[item integerValue]];
+//                    
+//                    NSError *error;
                     [_coreDataStack saveContext];
-                    NSLog(@"week of year: %@", error);
+//                    NSLog(@"week of year: %@", error);
                     [_fetchedResultsController performFetch:&error];
-                    NSLog(@"week of year fetch : %@", error);
-                }else {
-                    // 这点有多坑，如果不处理，将所有的都添加了
-                    [_coreDataStack.context deleteObject:weekoy];
+//                    NSLog(@"week of year fetch : %@", error);
                 }
                 
-                [mutableOrderSet addObject:weekoy];
+                [mutableOrderSet addObject:[self fetchWeekOfYear:item]];
             }
             
             //
             course.week_of_year = mutableOrderSet;
             [_coreDataStack saveContext];
-            
-            
-            [_fetchedResultsController performFetch:&error];
-            NSLog(@"week of year fetch : %@", error);
+            self.fetchedResultsController;
+            self.courseFetchResultsController;
         }
         
     }
@@ -155,11 +152,11 @@
                                    inManagedObjectContext:_coreDataStack.context];
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
                               initWithKey:@"name" ascending:NO];
-    NSPredicate    *predicate    = [NSPredicate predicateWithFormat:@"name == [cd] %@", @"高等数学A（二）"];
+//    NSPredicate    *predicate    = [NSPredicate predicateWithFormat:@"name == [cd] %@", @"高等数学A（二）"];
 
     [fetchRequest setEntity:entity];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
-    [fetchRequest setPredicate:predicate];
+//    [fetchRequest setPredicate:predicate];
     
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc]  initWithFetchRequest:fetchRequest
                                                                                                  managedObjectContext:_coreDataStack.context
@@ -175,6 +172,21 @@
     }
     
     return _courseFetchResultsController;
+}
+
+- (WeekOfYear *)fetchWeekOfYear:(NSString *)number {
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"WeekOfYear"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"weekOfYear == %@", number];
+    [fetch setPredicate:predicate];
+    
+    NSError *error ;
+    NSArray *obj = [_coreDataStack.context executeFetchRequest:fetch error:&error];
+    
+    if (obj.count > 0) {
+        return obj[0];
+    } else {
+        return  nil;
+    }
 }
 
 @end
