@@ -4,7 +4,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rooms" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="teachers" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="time" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
         <attribute name="weekday" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="week_of_year" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="WeekOfYear" inverseName="course" inverseEntity="WeekOfYear" syncable="YES"/>

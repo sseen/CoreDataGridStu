@@ -68,8 +68,8 @@
             Course *course = [[Course alloc] initWithEntity:courseEntity insertIntoManagedObjectContext:_coreDataStack.context];
             course.name = name;
             NSString *time = innerDic[@"time"];
-            NSInteger intTime = [[time substringToIndex:[time rangeOfString:@"-"].location] integerValue];
-            course.time = [NSNumber numberWithInteger:intTime];
+            float intTime = [[time stringByReplacingOccurrencesOfString:@"-" withString:@"."] floatValue];
+            course.time = [NSNumber numberWithFloat:intTime];
             course.year = innerDic[@"year"];
             course.rooms = innerDic[@"rooms"][0];
             course.teachers = innerDic[@"teachers"][0];
@@ -203,6 +203,7 @@
     for (Course *course in obj) {
         NSLog(@"%@\n", course.description);
     }
+    
     
 }
 
