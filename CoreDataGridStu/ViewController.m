@@ -17,6 +17,7 @@ int cellsInLine = 5;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet UIPickerView *pvWeek;
 @property (assign, nonatomic) Boolean statusPickerVisible;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottom;
 @end
 
 @implementation ViewController
@@ -50,9 +51,13 @@ int cellsInLine = 5;
     self.statusPickerVisible = YES;
     self.pvWeek.hidden = NO;
     self.pvWeek.alpha = 0.0f;
-    [self.view bringSubviewToFront:_pvWeek];
+    self.constraintBottom.constant = 0;
+//    [self.view setNeedsUpdateConstraints];
+    //[self.view bringSubviewToFront:_pvWeek];
     [UIView animateWithDuration:0.25 animations:^{
+        
         self.pvWeek.alpha = 1.0f;
+        [self.view layoutIfNeeded];
     }];
 }
 
@@ -69,14 +74,20 @@ int cellsInLine = 5;
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    return 1;
+    return 2;
 }
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
+    if (component == 0) {
+        return 1;
+    }
     return 10;
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
+    if (component == 0) {
+        return @"today";
+    }
     return @"ABC";
 }
 

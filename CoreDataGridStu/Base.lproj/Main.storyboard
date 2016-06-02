@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bcq-Ol-sea">
-                                <rect key="frame" x="0.0" y="64" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="-300" width="600" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="Ccv-c5-V42"/>
                                 </constraints>
@@ -34,7 +34,7 @@
                                 </connections>
                             </pickerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bvS-Ow-5f4">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0VW-rA-L7T">
                                     <size key="itemSize" width="99" height="99"/>
@@ -74,9 +74,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bvS-Ow-5f4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="AJi-VD-txK"/>
+                            <constraint firstItem="bvS-Ow-5f4" firstAttribute="top" secondItem="Bcq-Ol-sea" secondAttribute="bottom" id="2wD-5H-AYh"/>
                             <constraint firstItem="Bcq-Ol-sea" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Ed2-Df-ERE"/>
-                            <constraint firstItem="Bcq-Ol-sea" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Sgh-JY-4sa"/>
+                            <constraint firstItem="Bcq-Ol-sea" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-364" id="UWo-Vy-skX"/>
                             <constraint firstItem="bvS-Ow-5f4" firstAttribute="left" secondItem="8bC-Xf-vdC" secondAttribute="left" id="gin-XC-o3A"/>
                             <constraint firstAttribute="trailing" secondItem="bvS-Ow-5f4" secondAttribute="trailing" id="gkR-oT-SPc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bcq-Ol-sea" secondAttribute="trailing" constant="-20" id="mPF-WZ-FK8"/>
@@ -85,12 +85,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="fEu-zN-gPU"/>
                     <connections>
+                        <outlet property="constraintBottom" destination="UWo-Vy-skX" id="cWv-9s-8Da"/>
                         <outlet property="pvWeek" destination="Bcq-Ol-sea" id="M0g-Js-Iem"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="312"/>
+            <point key="canvasLocation" x="1164" y="626"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2kp-pg-Mnp">
