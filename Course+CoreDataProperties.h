@@ -2,7 +2,7 @@
 //  Course+CoreDataProperties.h
 //  CoreDataGridStu
 //
-//  Created by sseen on 16/5/31.
+//  Created by sseen on 16/6/2.
 //  Copyright © 2016年 sseen. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Course (CoreDataProperties)
+@interface Course (CoreDataProperties) <NSCopying>
 
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *rooms;
@@ -21,7 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *time;
 @property (nullable, nonatomic, retain) NSNumber *weekday;
 @property (nullable, nonatomic, retain) NSNumber *year;
+@property (nullable, nonatomic, retain) NSString *timeStr;
 @property (nullable, nonatomic, retain) NSOrderedSet<WeekOfYear *> *week_of_year;
+
 
 @end
 

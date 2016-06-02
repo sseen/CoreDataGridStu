@@ -68,8 +68,10 @@
             Course *course = [[Course alloc] initWithEntity:courseEntity insertIntoManagedObjectContext:_coreDataStack.context];
             course.name = name;
             NSString *time = innerDic[@"time"];
-            float intTime = [[time stringByReplacingOccurrencesOfString:@"-" withString:@"."] floatValue];
-            course.time = [NSNumber numberWithFloat:intTime];
+            course.timeStr = time;
+            NSInteger intTime = [[time substringToIndex:[time rangeOfString:@"-"].location] integerValue];
+            course.time = [NSNumber numberWithInteger:intTime];
+            
             course.year = innerDic[@"year"];
             course.rooms = innerDic[@"rooms"][0];
             course.teachers = innerDic[@"teachers"][0];
@@ -194,6 +196,7 @@
     NSSortDescriptor *sortDesc = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:YES];
     NSSortDescriptor *sortDesc2 = [[NSSortDescriptor alloc] initWithKey:@"weekday" ascending:YES];
     
+    
     [fetch setSortDescriptors:@[sortDesc, sortDesc2]];
     [fetch setPredicate:predicate];
     
@@ -204,7 +207,32 @@
         NSLog(@"%@\n", course.description);
     }
     
+    Course *tmpCourse = (Course *)obj[0];
+    int objIndex = 0;
+    NSInteger index = tmpCourse.weekday.integerValue * tmpCourse.time.integerValue;
+    NSMutableArray *dataArr = [NSMutableArray array];
     
+    for (int i=0; i< 5 * 6; i++) {
+        Course *emptyCourse = [tmpCourse copy];
+        emptyCourse.weekday = @-1;
+        
+        if (i+1 == index) {
+            [dataArr addObject:obj[objIndex++]];
+            // 不能越界
+            if (objIndex < obj.count) {
+                Course *tmp = (Course *)obj[objIndex];
+                int line = (int)(tmp.time.integerValue/2)+1;
+                index = tmp.weekday.integerValue +  5 * (line -1);
+            }
+        } else {
+            [dataArr addObject:emptyCourse];
+        }
+        
+    }
+    
+    for (Course *course in dataArr) {
+        NSLog(@"ssn%@\n", course.description);
+    }
 }
 
 @end
