@@ -21,6 +21,8 @@
 		926D5BD11CFD61BA00A1D074 /* WeekOfYear.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BCB1CFD61BA00A1D074 /* WeekOfYear.m */; };
 		926D5BD21CFD61BA00A1D074 /* Course+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BCD1CFD61BA00A1D074 /* Course+CoreDataProperties.m */; };
 		926D5BD31CFD61BA00A1D074 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BCF1CFD61BA00A1D074 /* Course.m */; };
+		92A16BB51D00343000F24A27 /* SF-UI-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92A16BB41D00343000F24A27 /* SF-UI-Text-Light.otf */; };
+		92A16BB71D00345900F24A27 /* SF-UI-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92A16BB61D00345900F24A27 /* SF-UI-Display-Thin.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		926D5BCD1CFD61BA00A1D074 /* Course+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Course+CoreDataProperties.m"; sourceTree = "<group>"; };
 		926D5BCE1CFD61BA00A1D074 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		926D5BCF1CFD61BA00A1D074 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		92A16BB41D00343000F24A27 /* SF-UI-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Light.otf"; sourceTree = "<group>"; };
+		92A16BB61D00345900F24A27 /* SF-UI-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Thin.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,8 @@
 		926D5BA61CFD33AD00A1D074 /* CoreDataGridStu */ = {
 			isa = PBXGroup;
 			children = (
+				92A16BB41D00343000F24A27 /* SF-UI-Text-Light.otf */,
+				92A16BB61D00345900F24A27 /* SF-UI-Display-Thin.otf */,
 				926D5BBE1CFD347600A1D074 /* seed.json */,
 				926D5BAA1CFD33AD00A1D074 /* AppDelegate.h */,
 				926D5BAB1CFD33AD00A1D074 /* AppDelegate.m */,
@@ -171,9 +177,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92A16BB51D00343000F24A27 /* SF-UI-Text-Light.otf in Resources */,
 				926D5BB71CFD33AD00A1D074 /* LaunchScreen.storyboard in Resources */,
 				926D5BB41CFD33AD00A1D074 /* Assets.xcassets in Resources */,
 				926D5BBF1CFD347600A1D074 /* seed.json in Resources */,
+				92A16BB71D00345900F24A27 /* SF-UI-Display-Thin.otf in Resources */,
 				926D5BB21CFD33AD00A1D074 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +352,7 @@
 				926D5BBD1CFD33AD00A1D074 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -230,9 +230,7 @@
         
     }
     
-    for (Course *course in dataArr) {
-        NSLog(@"ssn%@\n", course.description);
-    }
+    self.dataSource = [dataArr mutableCopy];
 }
 
 @end
