@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CoreDataStack;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) CoreDataStack* coreDataStack;
 
 @end
 

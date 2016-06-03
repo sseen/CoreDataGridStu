@@ -17,7 +17,7 @@
 #import "WeekOfYear+CoreDataProperties.h"
 
 @interface AppDelegate ()
-@property (nonatomic, strong) CoreDataStack* coreDataStack;
+
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSFetchedResultsController *courseFetchResultsController;
 @end
@@ -29,8 +29,6 @@
     // Override point for customization after application launch.
     
     [self importJSONSeedDataIfNeeded];
-    
-    [self fetchManyInfoUseTag];
     
     return YES;
 }
@@ -85,13 +83,13 @@
                 NSUInteger index = [self.fetchedResultsController.fetchedObjects indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     return ([[(WeekOfYear *)obj weekOfYear] integerValue] == item.integerValue);
                 }];
-                //
+                // 没有插入
                 if (index == NSNotFound) {
                     
                     WeekOfYear *weekoy = [[WeekOfYear alloc] initWithEntity:weekOfYearEntity insertIntoManagedObjectContext:_coreDataStack.context];
                     
                     weekoy.weekOfYear = [NSNumber numberWithInteger:[item integerValue]];
-//                    
+                    
                     NSError *error;
                     [_coreDataStack saveContext];
                     NSLog(@"week of year: %@", error);
@@ -188,49 +186,6 @@
     } else {
         return  nil;
     }
-}
-
-- (void)fetchManyInfoUseTag {
-    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:@"Course"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY week_of_year.weekOfYear == %@", @"27"];
-    NSSortDescriptor *sortDesc = [[NSSortDescriptor alloc] initWithKey:@"time" ascending:YES];
-    NSSortDescriptor *sortDesc2 = [[NSSortDescriptor alloc] initWithKey:@"weekday" ascending:YES];
-    
-    
-    [fetch setSortDescriptors:@[sortDesc, sortDesc2]];
-    [fetch setPredicate:predicate];
-    
-    NSError *error ;
-    NSArray *obj = [_coreDataStack.context executeFetchRequest:fetch error:&error];
-    
-    for (Course *course in obj) {
-        NSLog(@"%@\n", course.description);
-    }
-    
-    Course *tmpCourse = (Course *)obj[0];
-    int objIndex = 0;
-    NSInteger index = tmpCourse.weekday.integerValue * tmpCourse.time.integerValue;
-    NSMutableArray *dataArr = [NSMutableArray array];
-    
-    for (int i=0; i< 5 * 6; i++) {
-        Course *emptyCourse = [tmpCourse copy];
-        emptyCourse.weekday = @-1;
-        
-        if (i+1 == index) {
-            [dataArr addObject:obj[objIndex++]];
-            // 不能越界
-            if (objIndex < obj.count) {
-                Course *tmp = (Course *)obj[objIndex];
-                int line = (int)(tmp.time.integerValue/2)+1;
-                index = tmp.weekday.integerValue +  5 * (line -1);
-            }
-        } else {
-            [dataArr addObject:emptyCourse];
-        }
-        
-    }
-    
-    self.dataSource = [dataArr mutableCopy];
 }
 
 @end
