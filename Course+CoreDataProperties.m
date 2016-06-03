@@ -37,6 +37,7 @@
 }
 -(id)copyWithZone:(NSZone *)zone { // shallow copy
     NSManagedObjectContext *context = [self managedObjectContext];
+    // 会插入这些数据，需要再 context 里删除掉
     id copied = [[[self class] allocWithZone: zone] initWithEntity: [self entity] insertIntoManagedObjectContext: context];
     
     for(NSString *key in [[[self entity] attributesByName] allKeys]) {

@@ -13,6 +13,8 @@
 #import "CoreDataStack.h"
 #import "WeekOfYear.h"
 
+#import "WeekCollectionReusableView.h"
+
 int cellsInLine = 5;
 float pkWidth = 200;
 
@@ -51,6 +53,8 @@ float pkWidth = 200;
     [_btTitle addTarget:self action:@selector(ckTitle:) forControlEvents:UIControlEventTouchUpInside ];
     [buttonsView addSubview: _btTitle];
     self.navigationItem.titleView = buttonsView;
+    
+    [_collectionView registerClass:[WeekCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"supplementCell"];
     
     self.statusPickerVisible = NO;
     // 周必须是学期的周，也就是当前自然周减去开学的第一个自然周
@@ -217,6 +221,9 @@ float pkWidth = 200;
 }
 
 #pragma mark - datasouce
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 30;
@@ -236,6 +243,18 @@ float pkWidth = 200;
     }
     
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    WeekCollectionReusableView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"supplementCell" forIndexPath:indexPath];
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        
+    }
+
+    
+    return reusableview;
 }
 
 #pragma mark - flow layout

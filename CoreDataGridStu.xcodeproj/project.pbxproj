@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9253A63B1D0153AA00094BB7 /* WeekCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9253A63A1D0153AA00094BB7 /* WeekCollectionReusableView.m */; };
+		9253A63E1D01775000094BB7 /* WeekAndDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9253A63D1D01775000094BB7 /* WeekAndDateView.m */; };
 		926D5BA91CFD33AD00A1D074 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BA81CFD33AD00A1D074 /* main.m */; };
 		926D5BAC1CFD33AD00A1D074 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BAB1CFD33AD00A1D074 /* AppDelegate.m */; };
 		926D5BAF1CFD33AD00A1D074 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BAE1CFD33AD00A1D074 /* ViewController.m */; };
@@ -26,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9253A6391D0153AA00094BB7 /* WeekCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekCollectionReusableView.h; sourceTree = "<group>"; };
+		9253A63A1D0153AA00094BB7 /* WeekCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekCollectionReusableView.m; sourceTree = "<group>"; };
+		9253A63C1D01775000094BB7 /* WeekAndDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekAndDateView.h; sourceTree = "<group>"; };
+		9253A63D1D01775000094BB7 /* WeekAndDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekAndDateView.m; sourceTree = "<group>"; };
 		926D5BA41CFD33AD00A1D074 /* CoreDataGridStu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataGridStu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		926D5BA81CFD33AD00A1D074 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		926D5BAA1CFD33AD00A1D074 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -68,6 +74,10 @@
 		926D5B9B1CFD33AD00A1D074 = {
 			isa = PBXGroup;
 			children = (
+				9253A63C1D01775000094BB7 /* WeekAndDateView.h */,
+				9253A63D1D01775000094BB7 /* WeekAndDateView.m */,
+				9253A6391D0153AA00094BB7 /* WeekCollectionReusableView.h */,
+				9253A63A1D0153AA00094BB7 /* WeekCollectionReusableView.m */,
 				926D5BC81CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.h */,
 				926D5BC91CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.m */,
 				926D5BCA1CFD61BA00A1D074 /* WeekOfYear.h */,
@@ -199,7 +209,9 @@
 				926D5BAC1CFD33AD00A1D074 /* AppDelegate.m in Sources */,
 				926D5BD31CFD61BA00A1D074 /* Course.m in Sources */,
 				926D5BD01CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.m in Sources */,
+				9253A63E1D01775000094BB7 /* WeekAndDateView.m in Sources */,
 				926D5BA91CFD33AD00A1D074 /* main.m in Sources */,
+				9253A63B1D0153AA00094BB7 /* WeekCollectionReusableView.m in Sources */,
 				926D5BC41CFD398900A1D074 /* CoreDataStack.m in Sources */,
 				926D5BD11CFD61BA00A1D074 /* WeekOfYear.m in Sources */,
 			);

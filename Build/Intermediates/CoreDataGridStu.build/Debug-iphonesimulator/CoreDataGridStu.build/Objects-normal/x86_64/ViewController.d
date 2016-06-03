@@ -6,4 +6,5 @@ dependencies: \
   /Users/zyang/SNProject/CoreDataGridStu/Course+CoreDataProperties.h \
   /Users/zyang/SNProject/CoreDataGridStu/CoreDataGridStu/CoreDataStack.h \
   /Users/zyang/SNProject/CoreDataGridStu/WeekOfYear.h \
-  /Users/zyang/SNProject/CoreDataGridStu/WeekOfYear+CoreDataProperties.h
+  /Users/zyang/SNProject/CoreDataGridStu/WeekOfYear+CoreDataProperties.h \
+  /Users/zyang/SNProject/CoreDataGridStu/WeekCollectionReusableView.h
