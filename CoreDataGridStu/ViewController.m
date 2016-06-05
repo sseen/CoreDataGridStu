@@ -30,6 +30,7 @@ float pkWidth = 200;
 @property (nonatomic, strong) CoreDataStack *coreDataStack;
 @property (nonatomic, strong) NSMutableArray *weeksOfSeason;
 @property (nonatomic, strong) NSDateComponents *weekOfNow;
+@property (nonatomic, assign) NSInteger nowSelected;
 @end
 
 @implementation ViewController
@@ -70,9 +71,13 @@ float pkWidth = 200;
 - (NSDateComponents *)weekOfNow {
     if (!_weekOfNow) {
         NSDate *date = [NSDate date];
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitWeekOfYear|NSCalendarUnitWeekday fromDate:date];
+        NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
+        NSDate *dateInLocalTimezone = [date dateByAddingTimeInterval:timeZoneSeconds];
+        NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+        calendar.minimumDaysInFirstWeek = 4;
+        NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitWeekOfYear|NSCalendarUnitWeekday fromDate:dateInLocalTimezone];
         _weekOfNow = components;
+        self.nowSelected = _weekOfNow.weekOfYear - 9;
     }
     return _weekOfNow;
 }
@@ -107,8 +112,8 @@ float pkWidth = 200;
     // 组成collection data source
     for (int i=0; i< 5 * 6; i++) {
         Course *emptyCourse = [tmpCourse copy];
-        [self.coreDataStack.context deleteObject:emptyCourse];
         emptyCourse.weekday = @-1;
+        [self.coreDataStack.context deleteObject:emptyCourse];
         
         if (i+1 == index) {
             [dataArr addObject:obj[objIndex++]];
@@ -120,7 +125,7 @@ float pkWidth = 200;
             }
         } else {
             [dataArr addObject:emptyCourse];
-           
+            
         }
         
     }
@@ -207,14 +212,17 @@ float pkWidth = 200;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    _nowSelected = row;
     if (component == 1) {
         [self fetchManyInfoUseTag:(int)row + 10];
         [_btTitle setTitle:[NSString stringWithFormat:@"第%d周", (int)row + 1] forState:UIControlStateNormal];
         [pickerView selectRow:1 inComponent:0 animated:YES];
     }else {
+        // 今天
+        _nowSelected = _weekOfNow.weekOfYear-9;
         if (row == 0) {
             [self fetchManyInfoUseTag:(int)self.weekOfNow.weekOfYear];
-            [_btTitle setTitle:[NSString stringWithFormat:@"第%d周", (int)_weekOfNow.weekOfYear-0] forState:UIControlStateNormal];
+            [_btTitle setTitle:[NSString stringWithFormat:@"第%d周", (int)_weekOfNow.weekOfYear-8] forState:UIControlStateNormal];
             [pickerView selectRow:(int)_weekOfNow.weekOfYear-9 inComponent:1 animated:YES];
         }
     }
@@ -236,6 +244,9 @@ float pkWidth = 200;
     UILabel *lblTitle = [cell viewWithTag:1001];
     Course *tmp =  _dataSource[indexPath.item];
     if (tmp.weekday.integerValue != -1) {
+        if ([tmp.name isEqualToString:@"(null)"]) {
+            NSLog(@"ssn");
+        }
         lblTitle.text = [NSString stringWithFormat:@"%@ %@",tmp.name, tmp.rooms];
     }else {
         lblTitle.text = @"";
@@ -250,7 +261,7 @@ float pkWidth = 200;
     WeekCollectionReusableView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"supplementCell" forIndexPath:indexPath];
     
     if (kind == UICollectionElementKindSectionHeader) {
-        
+        [reusableview setWeekNow:(int)_nowSelected + 9 year:(int)_weekOfNow.year];
     }
 
     
