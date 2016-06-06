@@ -112,7 +112,7 @@ float pkWidth = 200;
     
     // 组成collection data source
     for (int i=0; i< 5 * 6; i++) {
-        Course *emptyCourse = [NSNull class];
+        NSNull *emptyCourse = [NSNull null];
         // emptyCourse.weekday = @-1;
         // [self.coreDataStack.context deleteObject:emptyCourse];
         
