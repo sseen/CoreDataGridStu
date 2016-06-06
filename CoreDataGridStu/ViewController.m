@@ -46,9 +46,10 @@ float pkWidth = 200;
     
     UIView *buttonsView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     self.btTitle = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    [self.btTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     NSString *strWeekOfYear = [NSString stringWithFormat:@"第%d周", (int)self.weekOfNow.weekOfYear - 9];
     //初始化 picker
-    [_pvWeek selectRow:(int)_weekOfNow.weekOfYear-9 inComponent:1 animated:NO];
+    [_pvWeek selectRow:(int)_weekOfNow.weekOfYear-9-1 inComponent:1 animated:NO];
     
     [_btTitle setTitle:strWeekOfYear forState:UIControlStateNormal];
     [_btTitle addTarget:self action:@selector(ckTitle:) forControlEvents:UIControlEventTouchUpInside ];
@@ -222,8 +223,8 @@ float pkWidth = 200;
         _nowSelected = _weekOfNow.weekOfYear-9;
         if (row == 0) {
             [self fetchManyInfoUseTag:(int)self.weekOfNow.weekOfYear];
-            [_btTitle setTitle:[NSString stringWithFormat:@"第%d周", (int)_weekOfNow.weekOfYear-8] forState:UIControlStateNormal];
-            [pickerView selectRow:(int)_weekOfNow.weekOfYear-9 inComponent:1 animated:YES];
+            [_btTitle setTitle:[NSString stringWithFormat:@"第%d周", (int)_weekOfNow.weekOfYear-9] forState:UIControlStateNormal];
+            [pickerView selectRow:(int)_weekOfNow.weekOfYear-9-1 inComponent:1 animated:YES];
         }
     }
 }
