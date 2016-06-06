@@ -112,9 +112,9 @@ float pkWidth = 200;
     
     // 组成collection data source
     for (int i=0; i< 5 * 6; i++) {
-        Course *emptyCourse = [tmpCourse copy];
-        emptyCourse.weekday = @-1;
-        [self.coreDataStack.context deleteObject:emptyCourse];
+        Course *emptyCourse = [NSNull class];
+        // emptyCourse.weekday = @-1;
+        // [self.coreDataStack.context deleteObject:emptyCourse];
         
         if (i+1 == index) {
             [dataArr addObject:obj[objIndex++]];
@@ -244,10 +244,8 @@ float pkWidth = 200;
     cell.backgroundColor= [UIColor colorWithRed:0.23 green:0.60 blue:0.85 alpha:1.00];
     UILabel *lblTitle = [cell viewWithTag:1001];
     Course *tmp =  _dataSource[indexPath.item];
-    if (tmp.weekday.integerValue != -1) {
-        if ([tmp.name isEqualToString:@"(null)"]) {
-            NSLog(@"ssn");
-        }
+    // NSLog(@"%@", tmp.name);
+    if ([tmp isKindOfClass:[Course class]]) {
         lblTitle.text = [NSString stringWithFormat:@"%@ %@",tmp.name, tmp.rooms];
     }else {
         lblTitle.text = @"";
