@@ -105,7 +105,7 @@ float pkWidth = 200;
         NSLog(@"%@\n", course.description);
     }
     
-    // obj 可以为 空，没有学期数据的时候后
+    // obj 可以为 空，没有学期数据的时候后，需要判断
     Course *tmpCourse = (Course *)obj[0];
     int objIndex = 0;
     NSInteger index = tmpCourse.weekday.integerValue * tmpCourse.time.integerValue;
