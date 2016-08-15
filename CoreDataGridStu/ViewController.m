@@ -105,33 +105,36 @@ float pkWidth = 200;
         NSLog(@"%@\n", course.description);
     }
     
-    // obj 可以为 空，没有学期数据的时候后，需要判断
-    Course *tmpCourse = (Course *)obj[0];
-    int objIndex = 0;
-    NSInteger index = tmpCourse.weekday.integerValue * tmpCourse.time.integerValue;
-    NSMutableArray *dataArr = [NSMutableArray array];
-    
-    // 组成collection data source
-    for (int i=0; i< 5 * 6; i++) {
-        NSNull *emptyCourse = [NSNull null];
-        // emptyCourse.weekday = @-1;
-        // [self.coreDataStack.context deleteObject:emptyCourse];
+    if (obj.count > 0) {
+        // obj 可以为 空，没有学期数据的时候后，需要判断
+        Course *tmpCourse = (Course *)obj[0];
+        int objIndex = 0;
+        NSInteger index = tmpCourse.weekday.integerValue * tmpCourse.time.integerValue;
+        NSMutableArray *dataArr = [NSMutableArray array];
         
-        if (i+1 == index) {
-            [dataArr addObject:obj[objIndex++]];
-            // 不能越界
-            if (objIndex < obj.count) {
-                Course *tmp = (Course *)obj[objIndex];
-                int line = (int)(tmp.time.integerValue/2)+1;
-                index = tmp.weekday.integerValue +  5 * (line -1);
+        // 组成collection data source
+        for (int i=0; i< 5 * 6; i++) {
+            NSNull *emptyCourse = [NSNull null];
+            // emptyCourse.weekday = @-1;
+            // [self.coreDataStack.context deleteObject:emptyCourse];
+            
+            if (i+1 == index) {
+                [dataArr addObject:obj[objIndex++]];
+                // 不能越界
+                if (objIndex < obj.count) {
+                    Course *tmp = (Course *)obj[objIndex];
+                    int line = (int)(tmp.time.integerValue/2)+1;
+                    index = tmp.weekday.integerValue +  5 * (line -1);
+                }
+            } else {
+                [dataArr addObject:emptyCourse];
+                
             }
-        } else {
-            [dataArr addObject:emptyCourse];
             
         }
-        
+        self.dataSource = dataArr ;
     }
-    self.dataSource = dataArr ;
+    
     [self.collectionView reloadData];
 }
 
@@ -242,16 +245,19 @@ float pkWidth = 200;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell0" forIndexPath:indexPath];
     
-    cell.backgroundColor= [UIColor colorWithRed:0.23 green:0.60 blue:0.85 alpha:1.00];
-    UILabel *lblTitle = [cell viewWithTag:1001];
-    Course *tmp =  _dataSource[indexPath.item];
-    // NSLog(@"%@", tmp.name);
-    if ([tmp isKindOfClass:[Course class]]) {
-        lblTitle.text = [NSString stringWithFormat:@"%@ %@",tmp.name, tmp.rooms];
-    }else {
-        lblTitle.text = @"";
-        cell.backgroundColor = [UIColor colorWithRed:0.23 green:0.60 blue:0.85 alpha:0.4];
+    if (_dataSource.count > 0) {
+        cell.backgroundColor= [UIColor colorWithRed:0.23 green:0.60 blue:0.85 alpha:1.00];
+        UILabel *lblTitle = [cell viewWithTag:1001];
+        Course *tmp =  _dataSource[indexPath.item];
+        // NSLog(@"%@", tmp.name);
+        if ([tmp isKindOfClass:[Course class]]) {
+            lblTitle.text = [NSString stringWithFormat:@"%@ %@",tmp.name, tmp.rooms];
+        }else {
+            lblTitle.text = @"";
+            cell.backgroundColor = [UIColor colorWithRed:0.23 green:0.60 blue:0.85 alpha:0.4];
+        }
     }
+    
     
     return cell;
 }
