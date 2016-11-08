@@ -25,6 +25,7 @@
 		926D5BD31CFD61BA00A1D074 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BCF1CFD61BA00A1D074 /* Course.m */; };
 		92A16BB51D00343000F24A27 /* SF-UI-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92A16BB41D00343000F24A27 /* SF-UI-Text-Light.otf */; };
 		92A16BB71D00345900F24A27 /* SF-UI-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92A16BB61D00345900F24A27 /* SF-UI-Display-Thin.otf */; };
+		92AA13D41DD1F009005A7C10 /* SNTimeTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AA13D31DD1F009005A7C10 /* SNTimeTableDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,8 @@
 		926D5BCF1CFD61BA00A1D074 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		92A16BB41D00343000F24A27 /* SF-UI-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Light.otf"; sourceTree = "<group>"; };
 		92A16BB61D00345900F24A27 /* SF-UI-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Thin.otf"; sourceTree = "<group>"; };
+		92AA13D21DD1F009005A7C10 /* SNTimeTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTimeTableDataSource.h; sourceTree = "<group>"; };
+		92AA13D31DD1F009005A7C10 /* SNTimeTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTimeTableDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				926D5BAB1CFD33AD00A1D074 /* AppDelegate.m */,
 				926D5BAD1CFD33AD00A1D074 /* ViewController.h */,
 				926D5BAE1CFD33AD00A1D074 /* ViewController.m */,
+				92AA13D21DD1F009005A7C10 /* SNTimeTableDataSource.h */,
+				92AA13D31DD1F009005A7C10 /* SNTimeTableDataSource.m */,
 				926D5BB01CFD33AD00A1D074 /* Main.storyboard */,
 				926D5BB31CFD33AD00A1D074 /* Assets.xcassets */,
 				926D5BB51CFD33AD00A1D074 /* LaunchScreen.storyboard */,
@@ -204,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				926D5BC71CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodeld in Sources */,
+				92AA13D41DD1F009005A7C10 /* SNTimeTableDataSource.m in Sources */,
 				926D5BAF1CFD33AD00A1D074 /* ViewController.m in Sources */,
 				926D5BD21CFD61BA00A1D074 /* Course+CoreDataProperties.m in Sources */,
 				926D5BAC1CFD33AD00A1D074 /* AppDelegate.m in Sources */,
