@@ -16,11 +16,12 @@
 #import "WeekCollectionReusableView.h"
 
 #import "SNTimeTableDataSource.h"
+#import "SNTimeTableFlowLayout.h"
 
-int cellsInLine = 5;
+
 float pkWidth = 200;
 
-@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIPickerViewDelegate, UIPickerViewDataSource>
+@interface ViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UIPickerViewDelegate, UIPickerViewDataSource>
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet UIPickerView *pvWeek;
 @property (assign, nonatomic) Boolean statusPickerVisible;
@@ -35,6 +36,7 @@ float pkWidth = 200;
 @property (nonatomic, assign) NSInteger nowSelected;
 
 @property (nonatomic, strong) SNTimeTableDataSource *delDatasource;
+@property (nonatomic, strong) SNTimeTableFlowLayout *delFlowLayout;
 @end
 
 @implementation ViewController
@@ -43,7 +45,7 @@ float pkWidth = 200;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.dataSource = appDelegate.dataSource;
     self.coreDataStack = appDelegate.coreDataStack;
     self.dataSource = [NSMutableArray array];
@@ -62,11 +64,17 @@ float pkWidth = 200;
     
     [_collectionView registerClass:[WeekCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"supplementCell"];
     
+    
+    
+    self.delDatasource = [[SNTimeTableDataSource alloc] init];
+    self.collectionView.dataSource = self.delDatasource;
+    
+    
     self.statusPickerVisible = NO;
     // 周必须是学期的周，也就是当前自然周减去开学的第一个自然周
     [self fetchManyInfoUseTag:(int)[self.weekOfNow weekOfYear]];
     
-    self.delDatasource = [[SNTimeTableDataSource alloc] init];
+
     self.delDatasource.configureCellBlock = ^(UICollectionViewCell *cell, NSIndexPath *indexPath, Course* model) {
 
         UILabel *lblTitle = [cell viewWithTag:1001];
@@ -79,9 +87,11 @@ float pkWidth = 200;
         }
 
     };
+    
+    __weak ViewController *wSelf = self;
     self.delDatasource.configureHeaderViewBlock = ^(WeekCollectionReusableView *headerView, NSString *kind, NSIndexPath *indexPath) {
         if (kind == UICollectionElementKindSectionHeader) {
-            [headerView setWeekNow:(int)_nowSelected + 9 year:(int)_weekOfNow.year];
+            [headerView setWeekNow:(int)_nowSelected + 9 year:(int)wSelf.weekOfNow.year];
         }
 //        if ([kind isEqualToString:@"DayHeaderView"]) {
 //            headerView.titleLabel.text = [NSString stringWithFormat:@"Day %d", indexPath.item + 1];
@@ -165,7 +175,7 @@ float pkWidth = 200;
     
     
     self.delDatasource.dataSource = self.dataSource;
-    self.collectionView.dataSource = self.delDatasource;
+    
     
     [self.collectionView reloadData];
 }
@@ -202,8 +212,6 @@ float pkWidth = 200;
     self.pvWeek.hidden = NO;
     self.pvWeek.alpha = 0.0f;
     self.constraintBottom.constant = 0;
-//    [self.view setNeedsUpdateConstraints];
-    //[self.view bringSubviewToFront:_pvWeek];
     [UIView animateWithDuration:0.25 animations:^{
         
         self.pvWeek.alpha = 1.0f;
@@ -263,41 +271,6 @@ float pkWidth = 200;
             [pickerView selectRow:(int)_weekOfNow.weekOfYear-9-1 inComponent:1 animated:YES];
         }
     }
-}
-
-
-#pragma mark - flow layout
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    float width = [self itemWidth];
-    return CGSizeMake(width, width);
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return [self itemSpacing];
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return [self itemSpacing];
-}
-
-// Layout: Set Edges
-- (UIEdgeInsets)collectionView:
-(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    //     return UIEdgeInsetsMake(0,8,0,8);  // top, left, bottom, right
-    return UIEdgeInsetsMake(0,0,0,0);  // top, left, bottom, right
-}
-
-- (float)itemSpacing {
-    float width = [self itemWidth];
-    float spacing = ((CGRectGetWidth(self.view.frame) - cellsInLine * width) / (cellsInLine -1));
-    return spacing;
-}
-
-- (float)itemWidth {
-    float width = roundf(( CGRectGetWidth(self.view.frame) - cellsInLine + 1) / cellsInLine);
-    return width;
 }
 
 @end
