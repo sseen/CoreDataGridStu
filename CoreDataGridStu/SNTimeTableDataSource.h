@@ -8,13 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+@class WeekCollectionReusableView;
+@class Course;
 
 
-typedef void (^ConfigureCellBlock)(CalendarEventCell *cell, NSIndexPath *indexPath, id<CalendarEvent> event);
-typedef void (^ConfigureHeaderViewBlock)(HeaderView *headerView, NSString *kind, NSIndexPath *indexPath);
+typedef void (^ConfigureCellBlock)(UICollectionViewCell *cell, NSIndexPath *indexPath, Course* model);
+typedef void (^ConfigureHeaderViewBlock)(WeekCollectionReusableView *headerView, NSString *kind, NSIndexPath *indexPath);
 
 
 @interface SNTimeTableDataSource : NSObject <UICollectionViewDataSource>
+
+@property (nonatomic, strong) NSMutableArray *dataSource;
 
 
 @property (copy, nonatomic) ConfigureCellBlock configureCellBlock;

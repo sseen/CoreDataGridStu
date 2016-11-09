@@ -14,38 +14,28 @@
 
 @interface SNTimeTableDataSource()
 
-@property (nonatomic, strong) NSMutableArray *dataSource;
+
 
 @end
 
 @implementation SNTimeTableDataSource
 
 #pragma mark - datasouce
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 30;
+    return self.dataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell0" forIndexPath:indexPath];
     
-    if (_dataSource.count > 0) {
-        cell.backgroundColor= [UIColor colorWithRed:0.23 green:0.60 blue:0.85 alpha:1.00];
-        UILabel *lblTitle = [cell viewWithTag:1001];
-        Course *tmp =  _dataSource[indexPath.item];
-        // NSLog(@"%@", tmp.name);
-        if ([tmp isKindOfClass:[Course class]]) {
-            lblTitle.text = [NSString stringWithFormat:@"%@ %@",tmp.name, tmp.rooms];
-        }else {
-            lblTitle.text = @"";
-            cell.backgroundColor = [UIColor colorWithRed:0.23 green:0.60 blue:0.85 alpha:0.4];
-        }
+    cell.backgroundColor= [UIColor colorWithRed:0.23 green:0.60 blue:0.85 alpha:1.00];
+    Course *tmp =  _dataSource[indexPath.item];
+    
+    if (_configureCellBlock) {
+        self.configureCellBlock(cell, indexPath, tmp);
     }
-    
-    
+
     return cell;
 }
 
@@ -53,8 +43,8 @@
 {
     WeekCollectionReusableView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"supplementCell" forIndexPath:indexPath];
     
-    if (kind == UICollectionElementKindSectionHeader) {
-        [reusableview setWeekNow:(int)_nowSelected + 9 year:(int)_weekOfNow.year];
+    if (self.configureHeaderViewBlock) {
+        self.configureHeaderViewBlock(reusableview, kind, indexPath);
     }
     
     
