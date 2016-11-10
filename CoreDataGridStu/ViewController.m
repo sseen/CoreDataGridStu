@@ -62,8 +62,8 @@ float pkWidth = 200;
     [buttonsView addSubview: _btTitle];
     self.navigationItem.titleView = buttonsView;
     
-    [_collectionView registerClass:[WeekCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"supplementCell"];
-    
+    [_collectionView registerClass:[WeekCollectionReusableView class] forSupplementaryViewOfKind:@"DayHeaderView" withReuseIdentifier:@"supplementCell"];
+    [_collectionView registerClass:[WeekCollectionReusableView class] forSupplementaryViewOfKind:@"HourHeaderView" withReuseIdentifier:@"supplementCell"];
     
     
     self.delDatasource = [[SNTimeTableDataSource alloc] init];
@@ -90,7 +90,7 @@ float pkWidth = 200;
     
     __weak ViewController *wSelf = self;
     self.delDatasource.configureHeaderViewBlock = ^(WeekCollectionReusableView *headerView, NSString *kind, NSIndexPath *indexPath) {
-        if (kind == UICollectionElementKindSectionHeader) {
+        if ([kind isEqualToString:@"DayHeaderView"]) {
             [headerView setWeekNow:(int)_nowSelected + 9 year:(int)wSelf.weekOfNow.year];
         }
 //        if ([kind isEqualToString:@"DayHeaderView"]) {
@@ -142,36 +142,6 @@ float pkWidth = 200;
     for (Course *course in obj) {
         NSLog(@"%@\n", course.description);
     }
-    
-//    if (obj.count > 0) {
-//        // obj 可以为 空，没有学期数据的时候后，需要判断
-//        Course *tmpCourse = (Course *)obj[0];
-//        int objIndex = 0;
-//        NSInteger index = tmpCourse.weekday.integerValue * tmpCourse.time.integerValue;
-//        NSMutableArray *dataArr = [NSMutableArray array];
-//        
-//        // 组成collection data source
-//        for (int i=0; i< 5 * 6; i++) {
-//            NSNull *emptyCourse = [NSNull null];
-//            // emptyCourse.weekday = @-1;
-//            // [self.coreDataStack.context deleteObject:emptyCourse];
-//            
-//            if (i+1 == index) {
-//                [dataArr addObject:obj[objIndex++]];
-//                // 不能越界
-//                if (objIndex < obj.count) {
-//                    Course *tmp = (Course *)obj[objIndex];
-//                    int line = (int)(tmp.time.integerValue/2)+1;
-//                    index = tmp.weekday.integerValue +  5 * (line -1);
-//                }
-//            } else {
-//                [dataArr addObject:emptyCourse];
-//                
-//            }
-//            
-//        }
-//        self.dataSource = dataArr ;
-//    }
     
     
     self.delDatasource.dataSource = obj;
