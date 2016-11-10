@@ -143,38 +143,38 @@ float pkWidth = 200;
         NSLog(@"%@\n", course.description);
     }
     
-    if (obj.count > 0) {
-        // obj 可以为 空，没有学期数据的时候后，需要判断
-        Course *tmpCourse = (Course *)obj[0];
-        int objIndex = 0;
-        NSInteger index = tmpCourse.weekday.integerValue * tmpCourse.time.integerValue;
-        NSMutableArray *dataArr = [NSMutableArray array];
-        
-        // 组成collection data source
-        for (int i=0; i< 5 * 6; i++) {
-            NSNull *emptyCourse = [NSNull null];
-            // emptyCourse.weekday = @-1;
-            // [self.coreDataStack.context deleteObject:emptyCourse];
-            
-            if (i+1 == index) {
-                [dataArr addObject:obj[objIndex++]];
-                // 不能越界
-                if (objIndex < obj.count) {
-                    Course *tmp = (Course *)obj[objIndex];
-                    int line = (int)(tmp.time.integerValue/2)+1;
-                    index = tmp.weekday.integerValue +  5 * (line -1);
-                }
-            } else {
-                [dataArr addObject:emptyCourse];
-                
-            }
-            
-        }
-        self.dataSource = dataArr ;
-    }
+//    if (obj.count > 0) {
+//        // obj 可以为 空，没有学期数据的时候后，需要判断
+//        Course *tmpCourse = (Course *)obj[0];
+//        int objIndex = 0;
+//        NSInteger index = tmpCourse.weekday.integerValue * tmpCourse.time.integerValue;
+//        NSMutableArray *dataArr = [NSMutableArray array];
+//        
+//        // 组成collection data source
+//        for (int i=0; i< 5 * 6; i++) {
+//            NSNull *emptyCourse = [NSNull null];
+//            // emptyCourse.weekday = @-1;
+//            // [self.coreDataStack.context deleteObject:emptyCourse];
+//            
+//            if (i+1 == index) {
+//                [dataArr addObject:obj[objIndex++]];
+//                // 不能越界
+//                if (objIndex < obj.count) {
+//                    Course *tmp = (Course *)obj[objIndex];
+//                    int line = (int)(tmp.time.integerValue/2)+1;
+//                    index = tmp.weekday.integerValue +  5 * (line -1);
+//                }
+//            } else {
+//                [dataArr addObject:emptyCourse];
+//                
+//            }
+//            
+//        }
+//        self.dataSource = dataArr ;
+//    }
     
     
-    self.delDatasource.dataSource = self.dataSource;
+    self.delDatasource.dataSource = obj;
     
     
     [self.collectionView reloadData];

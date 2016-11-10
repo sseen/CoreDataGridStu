@@ -51,4 +51,16 @@
     return reusableview;
 }
 
+- (Course *)eventAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.dataSource.count <= 0) {
+        return nil;
+    }
+    return self.dataSource[indexPath.item];
+}
+
+- (NSInteger)dataCounts {
+    return self.dataSource.count;
+}
+
 @end

@@ -21,6 +21,8 @@ typedef void (^ConfigureHeaderViewBlock)(WeekCollectionReusableView *headerView,
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
 
+- (Course *)eventAtIndexPath:(NSIndexPath *)indexPath;
+- (NSInteger)dataCounts;
 @property (copy, nonatomic) ConfigureCellBlock configureCellBlock;
 @property (copy, nonatomic) ConfigureHeaderViewBlock configureHeaderViewBlock;
 

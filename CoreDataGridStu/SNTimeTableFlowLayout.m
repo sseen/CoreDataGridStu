@@ -10,6 +10,7 @@
 
 #import "SNTimeTableFlowLayout.h"
 #import "SNTimeTableDataSource.h"
+#import "Course.h"
 
 static const int cellsInLine = 5;
 
@@ -66,8 +67,8 @@ static const CGFloat HourHeaderWidth = 100;
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CalendarDataSource *dataSource = self.collectionView.dataSource;
-    id<CalendarEvent> event = [dataSource eventAtIndexPath:indexPath];
+    SNTimeTableDataSource *dataSource = self.collectionView.dataSource;
+    Course* event = [dataSource eventAtIndexPath:indexPath];
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     attributes.frame = [self frameForEvent:event];
     return attributes;
@@ -107,23 +108,21 @@ static const CGFloat HourHeaderWidth = 100;
     //    NSLog(@"rect: %@, days: %d-%d, hours: %d-%d", NSStringFromCGRect(rect), minVisibleDay, maxVisibleDay, minVisibleHour, maxVisibleHour);
     
     SNTimeTableDataSource *dataSource = self.collectionView.dataSource;
-    NSArray *indexPaths = [dataSource indexPathsOfEventsBetweenMinDayIndex:minVisibleDay maxDayIndex:maxVisibleDay minStartHour:minVisibleHour maxStartHour:maxVisibleHour];
+//    NSArray *indexPaths = [dataSource indexPathsOfEventsBetweenMinDayIndex:minVisibleDay maxDayIndex:maxVisibleDay minStartHour:minVisibleHour maxStartHour:maxVisibleHour];
+    
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    if ([dataSource dataCounts] > 0) {
+        
+        for (NSInteger idx = 0; idx < [dataSource dataCounts]; idx++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:idx inSection:0];
+            [indexPaths addObject:indexPath];
+        }
+    }
+    
     return indexPaths;
 }
 
-- (NSInteger)dayIndexFromXCoordinate:(CGFloat)xPosition
-{
-    CGFloat contentWidth = [self collectionViewContentSize].width - HourHeaderWidth;
-    CGFloat widthPerDay = contentWidth / DaysPerWeek;
-    NSInteger dayIndex = MAX((NSInteger)0, (NSInteger)((xPosition - HourHeaderWidth) / widthPerDay));
-    return dayIndex;
-}
 
-- (NSInteger)hourIndexFromYCoordinate:(CGFloat)yPosition
-{
-    NSInteger hourIndex = MAX((NSInteger)0, (NSInteger)((yPosition - DayHeaderHeight) / HeightPerHour));
-    return hourIndex;
-}
 
 - (NSArray *)indexPathsOfDayHeaderViewsInRect:(CGRect)rect
 {
@@ -159,21 +158,35 @@ static const CGFloat HourHeaderWidth = 100;
     return indexPaths;
 }
 
-- (CGRect)frameForEvent:(id<CalendarEvent>)event
+- (CGRect)frameForEvent:(Course *)event
 {
     CGFloat totalWidth = [self collectionViewContentSize].width - HourHeaderWidth;
     CGFloat widthPerDay = totalWidth / DaysPerWeek;
     
     CGRect frame = CGRectZero;
-    frame.origin.x = HourHeaderWidth + widthPerDay * event.day;
-    frame.origin.y = DayHeaderHeight + HeightPerHour * event.startHour;
+    frame.origin.x = HourHeaderWidth + widthPerDay * event.weekday.integerValue;
+    frame.origin.y = DayHeaderHeight + HeightPerHour * event.time.integerValue;
     frame.size.width = widthPerDay;
-    frame.size.height = event.durationInHours * HeightPerHour;
+    frame.size.height = 2 * HeightPerHour; //event.durationInHours * HeightPerHour;
     
     frame = CGRectInset(frame, HorizontalSpacing/2.0, 0);
     return frame;
 }
 
+
+- (NSInteger)dayIndexFromXCoordinate:(CGFloat)xPosition
+{
+    CGFloat contentWidth = [self collectionViewContentSize].width - HourHeaderWidth;
+    CGFloat widthPerDay = contentWidth / DaysPerWeek;
+    NSInteger dayIndex = MAX((NSInteger)0, (NSInteger)((xPosition - HourHeaderWidth) / widthPerDay));
+    return dayIndex;
+}
+
+- (NSInteger)hourIndexFromYCoordinate:(CGFloat)yPosition
+{
+    NSInteger hourIndex = MAX((NSInteger)0, (NSInteger)((yPosition - DayHeaderHeight) / HeightPerHour));
+    return hourIndex;
+}
 
 
 //#pragma mark - flow layout

@@ -35,6 +35,7 @@
             self.year
             ];
 }
+
 -(id)copyWithZone:(NSZone *)zone { // shallow copy
     NSManagedObjectContext *context = [self managedObjectContext];
     // 会插入这些数据，需要再 context 里删除掉
