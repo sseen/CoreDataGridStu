@@ -12,14 +12,12 @@
 #import "SNTimeTableDataSource.h"
 #import "Course.h"
 
-static const int cellsInLine = 5;
 
 static const NSUInteger DaysPerWeek = 7;
 static const NSUInteger HoursPerDay = 24;
-static const CGFloat HorizontalSpacing = 10;
 static const CGFloat HeightPerHour = 50;
 static const CGFloat DayHeaderHeight = 40;
-static const CGFloat HourHeaderWidth = 100;
+static const CGFloat HourHeaderWidth = 20;
 
 
 @implementation SNTimeTableFlowLayout
@@ -100,16 +98,8 @@ static const CGFloat HourHeaderWidth = 100;
 
 - (NSArray *)indexPathsOfItemsInRect:(CGRect)rect
 {
-    NSInteger minVisibleDay = [self dayIndexFromXCoordinate:CGRectGetMinX(rect)];
-    NSInteger maxVisibleDay = [self dayIndexFromXCoordinate:CGRectGetMaxX(rect)];
-    NSInteger minVisibleHour = [self hourIndexFromYCoordinate:CGRectGetMinY(rect)];
-    NSInteger maxVisibleHour = [self hourIndexFromYCoordinate:CGRectGetMaxY(rect)];
-    
-    //    NSLog(@"rect: %@, days: %d-%d, hours: %d-%d", NSStringFromCGRect(rect), minVisibleDay, maxVisibleDay, minVisibleHour, maxVisibleHour);
     
     SNTimeTableDataSource *dataSource = self.collectionView.dataSource;
-//    NSArray *indexPaths = [dataSource indexPathsOfEventsBetweenMinDayIndex:minVisibleDay maxDayIndex:maxVisibleDay minStartHour:minVisibleHour maxStartHour:maxVisibleHour];
-    
     NSMutableArray *indexPaths = [NSMutableArray array];
     if ([dataSource dataCounts] > 0) {
         
@@ -169,7 +159,7 @@ static const CGFloat HourHeaderWidth = 100;
     frame.size.width = widthPerDay;
     frame.size.height = 2 * HeightPerHour; //event.durationInHours * HeightPerHour;
     
-    frame = CGRectInset(frame, HorizontalSpacing/2.0, 0);
+    frame = CGRectInset(frame, 1.0/2, 1.0/2);
     return frame;
 }
 
@@ -187,41 +177,5 @@ static const CGFloat HourHeaderWidth = 100;
     NSInteger hourIndex = MAX((NSInteger)0, (NSInteger)((yPosition - DayHeaderHeight) / HeightPerHour));
     return hourIndex;
 }
-
-
-//#pragma mark - flow layout
-//
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    float width = [self itemWidth];
-//    return CGSizeMake(width, width);
-//}
-//
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-//    return [self itemSpacing];
-//}
-//
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-//    return [self itemSpacing];
-//}
-//
-//// Layout: Set Edges
-//- (UIEdgeInsets)collectionView:
-//(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-//    //     return UIEdgeInsetsMake(0,8,0,8);  // top, left, bottom, right
-//    return UIEdgeInsetsMake(0,0,0,0);  // top, left, bottom, right
-//}
-//
-//- (float)itemSpacing {
-//    float width = [self itemWidth];
-//    float spacing = ((CGRectGetWidth([UIScreen mainScreen].bounds) - cellsInLine * width) / (cellsInLine -1));
-//    return spacing;
-//}
-//
-//- (float)itemWidth {
-//    float width = roundf(( CGRectGetWidth([UIScreen mainScreen].bounds) - cellsInLine + 1) / cellsInLine);
-//    return width;
-//}
-
 
 @end

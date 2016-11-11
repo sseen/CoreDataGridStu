@@ -53,9 +53,9 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="leadingMargin" secondItem="Z7j-py-y94" secondAttribute="leading" id="emy-ca-yRc"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="Z7j-py-y94" secondAttribute="trailing" id="jLk-Vw-0Ij"/>
-                                            <constraint firstAttribute="topMargin" secondItem="Z7j-py-y94" secondAttribute="top" id="pvf-F4-Wvd"/>
+                                            <constraint firstAttribute="trailing" secondItem="Z7j-py-y94" secondAttribute="trailing" id="3O3-WA-al1"/>
+                                            <constraint firstItem="Z7j-py-y94" firstAttribute="leading" secondItem="x2k-ZA-3cp" secondAttribute="leading" id="f0w-il-isE"/>
+                                            <constraint firstItem="Z7j-py-y94" firstAttribute="centerY" secondItem="x2k-ZA-3cp" secondAttribute="centerY" id="zWi-Iv-aeI"/>
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>

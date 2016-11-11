@@ -13,7 +13,8 @@
 #import "CoreDataStack.h"
 #import "WeekOfYear.h"
 
-#import "WeekCollectionReusableView.h"
+#import "TopWeekdayView.h"
+#import "LeftHourView.h"
 
 #import "SNTimeTableDataSource.h"
 #import "SNTimeTableFlowLayout.h"
@@ -21,7 +22,7 @@
 
 float pkWidth = 200;
 
-@interface ViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UIPickerViewDelegate, UIPickerViewDataSource>
+@interface ViewController () <UICollectionViewDelegate,UIPickerViewDelegate, UIPickerViewDataSource>
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet UIPickerView *pvWeek;
 @property (assign, nonatomic) Boolean statusPickerVisible;
@@ -62,8 +63,11 @@ float pkWidth = 200;
     [buttonsView addSubview: _btTitle];
     self.navigationItem.titleView = buttonsView;
     
-    [_collectionView registerClass:[WeekCollectionReusableView class] forSupplementaryViewOfKind:@"DayHeaderView" withReuseIdentifier:@"supplementCell"];
-    [_collectionView registerClass:[WeekCollectionReusableView class] forSupplementaryViewOfKind:@"HourHeaderView" withReuseIdentifier:@"supplementCell"];
+    UINib *TopWeekdayViewNib = [UINib nibWithNibName:@"TopWeekdayView" bundle:nil];
+    UINib *LeftHourViewNib = [UINib nibWithNibName:@"LeftHourView" bundle:nil];
+    
+    [_collectionView registerNib:TopWeekdayViewNib forSupplementaryViewOfKind:@"DayHeaderView" withReuseIdentifier:@"supplementCell"];
+    [_collectionView registerNib:LeftHourViewNib forSupplementaryViewOfKind:@"HourHeaderView" withReuseIdentifier:@"supplementCell"];
     
     
     self.delDatasource = [[SNTimeTableDataSource alloc] init];
@@ -88,11 +92,13 @@ float pkWidth = 200;
     };
     
     __weak ViewController *wSelf = self;
-    self.delDatasource.configureHeaderViewBlock = ^(WeekCollectionReusableView *headerView, NSString *kind, NSIndexPath *indexPath) {
+    self.delDatasource.configureHeaderViewBlock = ^(UICollectionReusableView *headerView, NSString *kind, NSIndexPath *indexPath) {
         if ([kind isEqualToString:@"DayHeaderView"]) {
-            [headerView setWeekNow:(int)_nowSelected + 9 year:(int)wSelf.weekOfNow.year];
+            TopWeekdayView *topView = (TopWeekdayView *)headerView;
+            [topView setWeekNow:(int)_nowSelected + 9 year:(int)wSelf.weekOfNow.year index:(int)indexPath.item];
         }else if ([kind isEqualToString:@"HourHeaderView"]) {
-            headerView.lblWeek.text = [NSString stringWithFormat:@"%2ld:00", indexPath.item + 1];
+            LeftHourView *leftView = (LeftHourView *)headerView;
+            leftView.lblWeek.text = [NSString stringWithFormat:@"%2ld", indexPath.item + 1];
         }
     };
     
@@ -139,10 +145,7 @@ float pkWidth = 200;
         NSLog(@"%@\n", course.description);
     }
     
-    
-    self.delDatasource.dataSource = obj;
-    
-    
+    self.delDatasource.dataSource = [NSMutableArray arrayWithArray:obj];
     [self.collectionView reloadData];
 }
 

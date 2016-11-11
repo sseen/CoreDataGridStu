@@ -9,7 +9,7 @@
 #import "SNTimeTableDataSource.h"
 
 #import "Course.h"
-#import "WeekCollectionReusableView.h"
+#import "TopWeekdayView.h"
 
 
 @interface SNTimeTableDataSource()
@@ -42,12 +42,11 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
 //    NSLog(@"datasource %@", indexPath);
-    WeekCollectionReusableView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:@"DayHeaderView" withReuseIdentifier:@"supplementCell" forIndexPath:indexPath];
+    TopWeekdayView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"supplementCell" forIndexPath:indexPath];
     
     if (self.configureHeaderViewBlock) {
         self.configureHeaderViewBlock(reusableview, kind, indexPath);
     }
-    
     
     return reusableview;
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9253A63B1D0153AA00094BB7 /* WeekCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9253A63A1D0153AA00094BB7 /* WeekCollectionReusableView.m */; };
 		926D5BA91CFD33AD00A1D074 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BA81CFD33AD00A1D074 /* main.m */; };
 		926D5BAC1CFD33AD00A1D074 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BAB1CFD33AD00A1D074 /* AppDelegate.m */; };
 		926D5BAF1CFD33AD00A1D074 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BAE1CFD33AD00A1D074 /* ViewController.m */; };
@@ -22,6 +21,12 @@
 		926D5BD11CFD61BA00A1D074 /* WeekOfYear.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BCB1CFD61BA00A1D074 /* WeekOfYear.m */; };
 		926D5BD21CFD61BA00A1D074 /* Course+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BCD1CFD61BA00A1D074 /* Course+CoreDataProperties.m */; };
 		926D5BD31CFD61BA00A1D074 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BCF1CFD61BA00A1D074 /* Course.m */; };
+		929254EC1DD5958F005E86CE /* TopWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 929254EA1DD5958F005E86CE /* TopWeekdayView.m */; };
+		929254ED1DD5958F005E86CE /* TopWeekdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 929254EB1DD5958F005E86CE /* TopWeekdayView.xib */; };
+		929254F11DD595AF005E86CE /* LeftHourView.m in Sources */ = {isa = PBXBuildFile; fileRef = 929254EF1DD595AF005E86CE /* LeftHourView.m */; };
+		929254F21DD595AF005E86CE /* LeftHourView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 929254F01DD595AF005E86CE /* LeftHourView.xib */; };
+		929254F51DD5AA14005E86CE /* SNOnePixelLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 929254F41DD5AA14005E86CE /* SNOnePixelLineView.m */; };
+		929254F81DD5B1BD005E86CE /* SNOnePixelColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 929254F71DD5B1BD005E86CE /* SNOnePixelColumnView.m */; };
 		92A16BB51D00343000F24A27 /* SF-UI-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92A16BB41D00343000F24A27 /* SF-UI-Text-Light.otf */; };
 		92A16BB71D00345900F24A27 /* SF-UI-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92A16BB61D00345900F24A27 /* SF-UI-Display-Thin.otf */; };
 		92AA13D41DD1F009005A7C10 /* SNTimeTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AA13D31DD1F009005A7C10 /* SNTimeTableDataSource.m */; };
@@ -29,8 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9253A6391D0153AA00094BB7 /* WeekCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekCollectionReusableView.h; sourceTree = "<group>"; };
-		9253A63A1D0153AA00094BB7 /* WeekCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekCollectionReusableView.m; sourceTree = "<group>"; };
 		926D5BA41CFD33AD00A1D074 /* CoreDataGridStu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataGridStu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		926D5BA81CFD33AD00A1D074 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		926D5BAA1CFD33AD00A1D074 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +57,16 @@
 		926D5BCD1CFD61BA00A1D074 /* Course+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Course+CoreDataProperties.m"; sourceTree = "<group>"; };
 		926D5BCE1CFD61BA00A1D074 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		926D5BCF1CFD61BA00A1D074 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		929254E91DD5958F005E86CE /* TopWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopWeekdayView.h; sourceTree = "<group>"; };
+		929254EA1DD5958F005E86CE /* TopWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopWeekdayView.m; sourceTree = "<group>"; };
+		929254EB1DD5958F005E86CE /* TopWeekdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopWeekdayView.xib; sourceTree = "<group>"; };
+		929254EE1DD595AF005E86CE /* LeftHourView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftHourView.h; sourceTree = "<group>"; };
+		929254EF1DD595AF005E86CE /* LeftHourView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftHourView.m; sourceTree = "<group>"; };
+		929254F01DD595AF005E86CE /* LeftHourView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftHourView.xib; sourceTree = "<group>"; };
+		929254F31DD5AA14005E86CE /* SNOnePixelLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNOnePixelLineView.h; sourceTree = "<group>"; };
+		929254F41DD5AA14005E86CE /* SNOnePixelLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNOnePixelLineView.m; sourceTree = "<group>"; };
+		929254F61DD5B1BD005E86CE /* SNOnePixelColumnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNOnePixelColumnView.h; sourceTree = "<group>"; };
+		929254F71DD5B1BD005E86CE /* SNOnePixelColumnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNOnePixelColumnView.m; sourceTree = "<group>"; };
 		92A16BB41D00343000F24A27 /* SF-UI-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Text-Light.otf"; sourceTree = "<group>"; };
 		92A16BB61D00345900F24A27 /* SF-UI-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Thin.otf"; sourceTree = "<group>"; };
 		92AA13D21DD1F009005A7C10 /* SNTimeTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTimeTableDataSource.h; sourceTree = "<group>"; };
@@ -77,8 +90,16 @@
 		926D5B9B1CFD33AD00A1D074 = {
 			isa = PBXGroup;
 			children = (
-				9253A6391D0153AA00094BB7 /* WeekCollectionReusableView.h */,
-				9253A63A1D0153AA00094BB7 /* WeekCollectionReusableView.m */,
+				929254F61DD5B1BD005E86CE /* SNOnePixelColumnView.h */,
+				929254F71DD5B1BD005E86CE /* SNOnePixelColumnView.m */,
+				929254F31DD5AA14005E86CE /* SNOnePixelLineView.h */,
+				929254F41DD5AA14005E86CE /* SNOnePixelLineView.m */,
+				929254EE1DD595AF005E86CE /* LeftHourView.h */,
+				929254EF1DD595AF005E86CE /* LeftHourView.m */,
+				929254F01DD595AF005E86CE /* LeftHourView.xib */,
+				929254E91DD5958F005E86CE /* TopWeekdayView.h */,
+				929254EA1DD5958F005E86CE /* TopWeekdayView.m */,
+				929254EB1DD5958F005E86CE /* TopWeekdayView.xib */,
 				926D5BC81CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.h */,
 				926D5BC91CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.m */,
 				926D5BCA1CFD61BA00A1D074 /* WeekOfYear.h */,
@@ -195,7 +216,9 @@
 				92A16BB51D00343000F24A27 /* SF-UI-Text-Light.otf in Resources */,
 				926D5BB71CFD33AD00A1D074 /* LaunchScreen.storyboard in Resources */,
 				926D5BB41CFD33AD00A1D074 /* Assets.xcassets in Resources */,
+				929254ED1DD5958F005E86CE /* TopWeekdayView.xib in Resources */,
 				926D5BBF1CFD347600A1D074 /* seed.json in Resources */,
+				929254F21DD595AF005E86CE /* LeftHourView.xib in Resources */,
 				92A16BB71D00345900F24A27 /* SF-UI-Display-Thin.otf in Resources */,
 				926D5BB21CFD33AD00A1D074 /* Main.storyboard in Resources */,
 			);
@@ -213,13 +236,16 @@
 				92AA13D41DD1F009005A7C10 /* SNTimeTableDataSource.m in Sources */,
 				926D5BAF1CFD33AD00A1D074 /* ViewController.m in Sources */,
 				926D5BD21CFD61BA00A1D074 /* Course+CoreDataProperties.m in Sources */,
+				929254EC1DD5958F005E86CE /* TopWeekdayView.m in Sources */,
 				926D5BAC1CFD33AD00A1D074 /* AppDelegate.m in Sources */,
 				926D5BD31CFD61BA00A1D074 /* Course.m in Sources */,
 				926D5BD01CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.m in Sources */,
 				926D5BA91CFD33AD00A1D074 /* main.m in Sources */,
-				9253A63B1D0153AA00094BB7 /* WeekCollectionReusableView.m in Sources */,
 				926D5BC41CFD398900A1D074 /* CoreDataStack.m in Sources */,
 				926D5BD11CFD61BA00A1D074 /* WeekOfYear.m in Sources */,
+				929254F11DD595AF005E86CE /* LeftHourView.m in Sources */,
+				929254F51DD5AA14005E86CE /* SNOnePixelLineView.m in Sources */,
+				929254F81DD5B1BD005E86CE /* SNOnePixelColumnView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
