@@ -7,24 +7,28 @@
 //
 
 #import "WeekCollectionReusableView.h"
-#import "WeekAndDateView.h"
+
+float width = 80;
+float height = 30;
+
 
 @interface WeekCollectionReusableView()
 
 
 @end
 
+
+
 @implementation WeekCollectionReusableView
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        for (int i=0 ; i<5; i++) {
-            WeekAndDateView *view = [[WeekAndDateView alloc] initWithWeek:i+1 Date:@"12-11"];
-            view.frame = CGRectMake(i*80, 0, CGRectGetWidth(self.frame), 60);
-            view.tag = 5000 + i;
-            [self addSubview:view];
-        }
+        _lblWeek = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+        _lblDate = [[UILabel alloc] initWithFrame:CGRectMake(0, height, width, height)];
+
+        [self addSubview:_lblWeek];
+        [self addSubview:_lblDate];
     }
     return self;
 }
@@ -40,10 +44,9 @@
     gregorianCalendar.minimumDaysInFirstWeek = 4; //国际规定 iso 8911 只有这样才能取到正确的 第一周
     NSDate *firstDay = [gregorianCalendar dateFromComponents:weekDC];
     
-    for (int i=0 ; i<5; i++) {
-        WeekAndDateView *view = [self viewWithTag:5000 + i];
-        view.lblDate.text = [self formatDateToStringTpye:[firstDay dateByAddingTimeInterval:24*60*60*(i+1)]];//＋1是因为第一天是周日
-    }
+    
+    self.lblDate.text = [self formatDateToStringTpye:[firstDay dateByAddingTimeInterval:24*60*60]];//＋1是因为第一天是周日
+ 
 }
 
 - (NSString *)formatDateToStringTpye:(NSDate *)date {

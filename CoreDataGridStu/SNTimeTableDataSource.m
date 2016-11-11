@@ -41,7 +41,8 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    WeekCollectionReusableView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"supplementCell" forIndexPath:indexPath];
+//    NSLog(@"datasource %@", indexPath);
+    WeekCollectionReusableView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:@"DayHeaderView" withReuseIdentifier:@"supplementCell" forIndexPath:indexPath];
     
     if (self.configureHeaderViewBlock) {
         self.configureHeaderViewBlock(reusableview, kind, indexPath);

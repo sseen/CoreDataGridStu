@@ -69,7 +69,6 @@ float pkWidth = 200;
     self.delDatasource = [[SNTimeTableDataSource alloc] init];
     self.collectionView.dataSource = self.delDatasource;
     
-    
     self.statusPickerVisible = NO;
     // 周必须是学期的周，也就是当前自然周减去开学的第一个自然周
     [self fetchManyInfoUseTag:(int)[self.weekOfNow weekOfYear]];
@@ -92,12 +91,9 @@ float pkWidth = 200;
     self.delDatasource.configureHeaderViewBlock = ^(WeekCollectionReusableView *headerView, NSString *kind, NSIndexPath *indexPath) {
         if ([kind isEqualToString:@"DayHeaderView"]) {
             [headerView setWeekNow:(int)_nowSelected + 9 year:(int)wSelf.weekOfNow.year];
+        }else if ([kind isEqualToString:@"HourHeaderView"]) {
+            headerView.lblWeek.text = [NSString stringWithFormat:@"%2ld:00", indexPath.item + 1];
         }
-//        if ([kind isEqualToString:@"DayHeaderView"]) {
-//            headerView.titleLabel.text = [NSString stringWithFormat:@"Day %d", indexPath.item + 1];
-//        } else if ([kind isEqualToString:@"HourHeaderView"]) {
-//            headerView.titleLabel.text = [NSString stringWithFormat:@"%2d:00", indexPath.item + 1];
-//        }
     };
     
 }

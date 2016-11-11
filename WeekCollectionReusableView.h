@@ -10,6 +10,9 @@
 
 @interface WeekCollectionReusableView : UICollectionReusableView
 
+@property (nonatomic, strong) UILabel *lblWeek;
+@property (nonatomic, strong) UILabel *lblDate;
+
 @property (nonatomic, assign) NSInteger weekNow;
 
 - (void)setWeekNow:(int)weekNow year:(int)year;
