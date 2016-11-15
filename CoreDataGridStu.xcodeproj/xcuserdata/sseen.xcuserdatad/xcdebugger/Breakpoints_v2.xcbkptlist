@@ -122,13 +122,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataGridStu/AppDelegate.m"
-            timestampString = "500904391.566726"
+            timestampString = "500905196.527099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-importJSONSeedData"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoreDataGridStu/AppDelegate.m"
+            timestampString = "500905276.51225"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-importJSONSeedData"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AppDelegate importJSONSeedData]"
+                  moduleName = "CoreDataGridStu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zyang/SNProject/CoreDataGridStu/CoreDataGridStu/AppDelegate.m"
+                  timestampString = "500905290.617758"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "4113">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__33-[AppDelegate importJSONSeedData]_block_invoke.122"
+                  moduleName = "CoreDataGridStu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zyang/SNProject/CoreDataGridStu/CoreDataGridStu/AppDelegate.m"
+                  timestampString = "500905290.620166"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "78">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

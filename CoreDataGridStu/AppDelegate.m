@@ -105,8 +105,14 @@
         }
         
         // add color belong the top class
-        [m_array sortUsingComparator:^NSComparisonResult(Course *obj1, Course *obj2) {
-            return [[NSNumber numberWithInt: (int)obj1.week_of_year.count ] compare:[NSNumber numberWithInt: (int)obj2.week_of_year.count]];
+        [m_array sortUsingComparator:^NSComparisonResult(Course *p1, Course *p2) {
+            if (p1.week_of_year.count > p2.week_of_year.count) {
+                return (NSComparisonResult)NSOrderedDescending;
+            }
+            if (p1.week_of_year.count < p2.week_of_year.count) {
+                return (NSComparisonResult)NSOrderedAscending;
+            }
+            return (NSComparisonResult)NSOrderedSame;
         }];
         
         [_coreDataStack saveContext];
