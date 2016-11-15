@@ -8,7 +8,6 @@
 
 #import "SNTimeTableDataSource.h"
 
-#import "Course.h"
 #import "TopWeekdayView.h"
 
 

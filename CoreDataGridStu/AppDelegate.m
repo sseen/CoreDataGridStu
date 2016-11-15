@@ -11,9 +11,7 @@
 #import <CoreData/CoreData.h>
 
 #import "Course+CoreDataProperties.h"
-#import "Course.h"
 
-#import "WeekOfYear.h"
 #import "WeekOfYear+CoreDataProperties.h"
 
 @interface AppDelegate ()
@@ -55,7 +53,7 @@
                                                              options:NSJSONReadingAllowFragments
                                                                error:&error];
     NSArray *jsonArray = jsonDict[@"activitys"];
-    
+    NSMutableArray *m_array = [NSMutableArray array];
     for (NSDictionary *dic in jsonArray) {
         NSArray *innerArray = dic[@"activities"];
         NSString *name = dic[@"course_name"];
@@ -102,9 +100,16 @@
             
             //
             course.week_of_year = mutableOrderSet;
-            [_coreDataStack saveContext];
+           
+            [m_array addObject:course];
         }
         
+        // add color belong the top class
+        [m_array sortUsingComparator:^NSComparisonResult(Course *obj1, Course *obj2) {
+            return [[NSNumber numberWithInt: (int)obj1.week_of_year.count ] compare:[NSNumber numberWithInt: (int)obj2.week_of_year.count]];
+        }];
+        
+        [_coreDataStack saveContext];
     }
 }
 

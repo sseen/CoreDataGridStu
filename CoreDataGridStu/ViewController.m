@@ -9,9 +9,9 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 
-#import "Course.h"
+#import "Course+CoreDataClass.h"
 #import "CoreDataStack.h"
-#import "WeekOfYear.h"
+#import "WeekOfYear+CoreDataClass.h"
 
 #import "TopWeekdayView.h"
 #import "LeftHourView.h"
@@ -26,7 +26,7 @@ float pkWidth = 200;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet UIPickerView *pvWeek;
 @property (assign, nonatomic) Boolean statusPickerVisible;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottom;  
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic, strong) UIButton *btTitle;

@@ -2,20 +2,20 @@
 //  WeekOfYear+CoreDataProperties.h
 //  CoreDataGridStu
 //
-//  Created by sseen on 16/5/31.
+//  Created by sseen on 2016/11/15.
 //  Copyright © 2016年 sseen. All rights reserved.
 //
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
-//
 
-#import "WeekOfYear.h"
+#import "WeekOfYear+CoreDataClass.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeekOfYear (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSNumber *weekOfYear;
++ (NSFetchRequest<WeekOfYear *> *)fetchRequest;
+
+@property (nullable, nonatomic, copy) NSNumber *weekOfYear;
 @property (nullable, nonatomic, retain) NSOrderedSet<Course *> *course;
 
 @end

@@ -2,16 +2,17 @@
 //  WeekOfYear+CoreDataProperties.m
 //  CoreDataGridStu
 //
-//  Created by sseen on 16/5/31.
+//  Created by sseen on 2016/11/15.
 //  Copyright © 2016年 sseen. All rights reserved.
-//
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
 //
 
 #import "WeekOfYear+CoreDataProperties.h"
 
 @implementation WeekOfYear (CoreDataProperties)
+
++ (NSFetchRequest<WeekOfYear *> *)fetchRequest {
+	return [[NSFetchRequest alloc] initWithEntityName:@"WeekOfYear"];
+}
 
 @dynamic weekOfYear;
 @dynamic course;

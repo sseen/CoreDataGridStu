@@ -10,7 +10,7 @@
 
 #import "SNTimeTableFlowLayout.h"
 #import "SNTimeTableDataSource.h"
-#import "Course.h"
+#import "Course+CoreDataClass.h"
 
 
 static const NSUInteger DaysPerWeek = 7;
