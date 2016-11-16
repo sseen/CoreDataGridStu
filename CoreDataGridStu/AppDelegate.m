@@ -56,17 +56,35 @@
     NSMutableArray *m_array = [NSMutableArray arrayWithArray:jsonArray];
     
     // 6 combine group from dark to light
-    NSArray *colorPalette = @[@0xFD6461,@0xF7A650,@0x71CA58,@0x51BAF2,@0xD08CE0,@0xA5A5A7,@0xFD7B78,
-                              @0xF8B36A,
-                              @0x86D271,
-                              @0x6BC4F4,
-                              @0xD79DE4,
-                              @0xB2B2B4,
-                              @0xFD9A98,
-                              @0xFAC58D,
-                              @0xA2DC92,
-                              @0x51BAF2,
-                              @0xC4C4C6];
+//    NSArray *colorPalette = @[@0xFD6461,@0xF7A650,@0x71CA58,@0x51BAF2,@0xD08CE0,@0xA5A5A7,@0xFD7B78,
+//                              @0xF8B36A,
+//                              @0x86D271,
+//                              @0x6BC4F4,
+//                              @0xD79DE4,
+//                              @0xB2B2B4,
+//                              @0xFD9A98,
+//                              @0xFAC58D,
+//                              @0xA2DC92,
+//                              @0x51BAF2,
+//                              @0xC4C4C6];
+    NSArray *colorPalette = @[@0x1A9AEA,
+                              @0x1FB0EC,
+                              @0x39C3EE,
+                              @0x4BD7EE,
+                              @0xFFCEDD,
+                              @0xCA5898,
+                              @0xDD65A0,
+                              @0xFD7DAC,
+                              @0x355970,
+                              @0x3A6882,
+                              @0x8BACCD,
+                              @0xDE8679,
+                              @0xFD9A73,
+                              @0xFDAE87,
+                              @0xFDCA96,
+                              @0x48A0AC,
+                              @0x7DDDCC,
+                              @0xA1E9C2];
     
     int step=0;
     for (NSDictionary *dic in jsonArray) {
