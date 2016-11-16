@@ -81,9 +81,9 @@ float pkWidth = 200;
     self.delDatasource.configureCellBlock = ^(UICollectionViewCell *cell, NSIndexPath *indexPath, Course* model) {
 
         UILabel *lblTitle = [cell viewWithTag:1001];
-        
         if ([model isKindOfClass:[Course class]]) {
             lblTitle.text = [NSString stringWithFormat:@"%@ %@",model.name, model.rooms];
+            cell.backgroundColor = UIColorFromRGB([model.color longValue]);
         }else {
             lblTitle.text = @"";
             cell.backgroundColor = [UIColor colorWithRed:0.23 green:0.60 blue:0.85 alpha:0.4];

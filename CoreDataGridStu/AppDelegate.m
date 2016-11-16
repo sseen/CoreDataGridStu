@@ -53,13 +53,28 @@
                                                              options:NSJSONReadingAllowFragments
                                                                error:&error];
     NSArray *jsonArray = jsonDict[@"activitys"];
-    NSMutableArray *m_array = [NSMutableArray array];
+    NSMutableArray *m_array = [NSMutableArray arrayWithArray:jsonArray];
+    
+    // 6 combine group from dark to light
+    NSArray *colorPalette = @[@0xFD6461,@0xF7A650,@0x71CA58,@0x51BAF2,@0xD08CE0,@0xA5A5A7,@0xFD7B78,
+                              @0xF8B36A,
+                              @0x86D271,
+                              @0x6BC4F4,
+                              @0xD79DE4,
+                              @0xB2B2B4,
+                              @0xFD9A98,
+                              @0xFAC58D,
+                              @0xA2DC92,
+                              @0x51BAF2,
+                              @0xC4C4C6];
+    
+    int step=0;
     for (NSDictionary *dic in jsonArray) {
         NSArray *innerArray = dic[@"activities"];
         NSString *name = dic[@"course_name"];
+        NSNumber *colorFloat = colorPalette[step++];
         // 有几条就插几条 相同课程的纪录
         for (NSDictionary *innerDic in innerArray) {
-            
             
             Course *course = [[Course alloc] initWithEntity:courseEntity insertIntoManagedObjectContext:_coreDataStack.context];
             course.name = name;
@@ -67,7 +82,7 @@
             course.timeStr = time;
             NSInteger intTime = [[time substringToIndex:[time rangeOfString:@"-"].location] integerValue];
             course.time = [NSNumber numberWithInteger:intTime];
-            
+            course.color = colorFloat;
             course.year = innerDic[@"year"];
             course.rooms = innerDic[@"rooms"][0];
             course.teachers = innerDic[@"teachers"][0];
@@ -93,6 +108,7 @@
                     NSLog(@"week of year: %@", error);
                     [_fetchedResultsController performFetch:&error];
                     NSLog(@"week of year fetch : %@", error);
+                    
                 }
                 
                 [mutableOrderSet addObject:[self fetchWeekOfYear:item]];
@@ -100,22 +116,11 @@
             
             //
             course.week_of_year = mutableOrderSet;
-           
-            [m_array addObject:course];
+            
+            [_coreDataStack saveContext];
         }
         
-        // add color belong the top class
-        [m_array sortUsingComparator:^NSComparisonResult(Course *p1, Course *p2) {
-            if (p1.week_of_year.count > p2.week_of_year.count) {
-                return (NSComparisonResult)NSOrderedDescending;
-            }
-            if (p1.week_of_year.count < p2.week_of_year.count) {
-                return (NSComparisonResult)NSOrderedAscending;
-            }
-            return (NSComparisonResult)NSOrderedSame;
-        }];
         
-        [_coreDataStack saveContext];
     }
 }
 

@@ -14,9 +14,9 @@
 
 
 static const NSUInteger DaysPerWeek = 7;
-static const NSUInteger HoursPerDay = 24;
+static const NSUInteger HoursPerDay = 13;//24;
 static const CGFloat HeightPerHour = 50;
-static const CGFloat DayHeaderHeight = 40;
+static const CGFloat DayHeaderHeight = 50;
 static const CGFloat HourHeaderWidth = 20;
 
 
@@ -83,7 +83,7 @@ static const CGFloat HourHeaderWidth = 20;
         attributes.frame = CGRectMake(HourHeaderWidth + (widthPerDay * indexPath.item), 0, widthPerDay, DayHeaderHeight);
         attributes.zIndex = -10;
     } else if ([kind isEqualToString:@"HourHeaderView"]) {
-        attributes.frame = CGRectMake(0, DayHeaderHeight + HeightPerHour * indexPath.item, totalWidth, HeightPerHour);
+        attributes.frame = CGRectMake(0, DayHeaderHeight + HeightPerHour * (indexPath.item -1), totalWidth, HeightPerHour);
         attributes.zIndex = -10;
     }
     return attributes;
@@ -155,11 +155,11 @@ static const CGFloat HourHeaderWidth = 20;
     
     CGRect frame = CGRectZero;
     frame.origin.x = HourHeaderWidth + widthPerDay * event.weekday.integerValue;
-    frame.origin.y = DayHeaderHeight + HeightPerHour * event.time.integerValue;
+    frame.origin.y = DayHeaderHeight + HeightPerHour * (event.time.integerValue -1);
     frame.size.width = widthPerDay;
     frame.size.height = 2 * HeightPerHour; //event.durationInHours * HeightPerHour;
     
-    frame = CGRectInset(frame, 1.0/2, 1.0/2);
+    // frame = CGRectInset(frame, 1.0/2, 1.0/2);
     return frame;
 }
 

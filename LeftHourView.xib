@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,23 +15,35 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w2M-6U-otp" customClass="SNOnePixelColumnView">
+                    <rect key="frame" x="15" y="0.0" width="1" height="50"/>
+                    <color key="backgroundColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="z5m-aW-IKg"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNC-At-TQE" customClass="SNOnePixelLineView">
+                    <rect key="frame" x="0.0" y="49" width="320" height="1"/>
                     <color key="backgroundColor" red="0.92538958787918091" green="0.92554813623428345" blue="0.92537957429885864" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="BOr-t0-o7l"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2C-Ts-DPq">
+                    <rect key="frame" x="2" y="4" width="36" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="BNC-At-TQE" secondAttribute="trailing" id="4tv-ca-XZe"/>
                 <constraint firstItem="m2C-Ts-DPq" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="4" id="FfM-Jr-ghC"/>
-                <constraint firstItem="m2C-Ts-DPq" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="4" id="fRq-5Y-mJf"/>
-                <constraint firstAttribute="bottom" secondItem="BNC-At-TQE" secondAttribute="bottom" constant="1" id="loQ-QM-oby"/>
+                <constraint firstItem="w2M-6U-otp" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="I4l-r9-3ip"/>
+                <constraint firstItem="w2M-6U-otp" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="15" id="eLT-iV-jJh"/>
+                <constraint firstItem="w2M-6U-otp" firstAttribute="height" secondItem="U6b-Vx-4bR" secondAttribute="height" id="eRp-39-xUP"/>
+                <constraint firstItem="m2C-Ts-DPq" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="2" id="fRq-5Y-mJf"/>
+                <constraint firstAttribute="bottom" secondItem="BNC-At-TQE" secondAttribute="bottom" id="loQ-QM-oby"/>
                 <constraint firstItem="BNC-At-TQE" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="uwO-nZ-1B6"/>
             </constraints>
             <connections>
