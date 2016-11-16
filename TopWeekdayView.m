@@ -28,7 +28,7 @@
     gregorianCalendar.minimumDaysInFirstWeek = 4; //国际规定 iso 8911 只有这样才能取到正确的 第一周
     NSDate *firstDay = [gregorianCalendar dateFromComponents:weekDC];
     
-    self.lblDate.text = [self formatDateToStringTpye:[firstDay dateByAddingTimeInterval:24*60*60]];//＋1是因为第一天是周日
+    self.lblDate.text = [self formatDateToStringTpye:[firstDay dateByAddingTimeInterval:24*60*60*weekDay]];//＋1是因为第一天是周日
     self.lblWeek.text = weekCN[weekDay];
 }
 
