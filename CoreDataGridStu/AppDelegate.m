@@ -67,24 +67,50 @@
 //                              @0xA2DC92,
 //                              @0x51BAF2,
 //                              @0xC4C4C6];
-    NSArray *colorPalette = @[@0x1A9AEA,
-                              @0x1FB0EC,
-                              @0x39C3EE,
-                              @0x4BD7EE,
-                              @0xFFCEDD,
+// second choise
+//    NSArray *colorPalette = @[@0x1A9AEA,
+//                              @0x1FB0EC,
+//                              @0x39C3EE,
+//                              @0x4BD7EE,
+//                              @0xFFCEDD,
+//                              @0xCA5898,
+//                              @0xDD65A0,
+//                              @0xFD7DAC,
+//                              @0x355970,
+//                              @0x3A6882,
+//                              @0x8BACCD,
+//                              @0xDE8679,
+//                              @0xFD9A73,
+//                              @0xFDAE87,
+//                              @0xFDCA96,
+//                              @0x48A0AC,
+//                              @0x7DDDCC,
+//                              @0xA1E9C2];
+    
+    NSArray *colorPalette = @[
                               @0xCA5898,
                               @0xDD65A0,
                               @0xFD7DAC,
-                              @0x355970,
-                              @0x3A6882,
-                              @0x8BACCD,
-                              @0xDE8679,
+                              
+                              @0x1A9AEA,
+                              @0x1FB0EC,
+                              @0x4BD7EE,
+                              
+                              @0x48A0AC,
+                              @0x7DDDCC,
+                              @0xA1E9C2,
+                              
                               @0xFD9A73,
                               @0xFDAE87,
                               @0xFDCA96,
-                              @0x48A0AC,
-                              @0x7DDDCC,
-                              @0xA1E9C2];
+                              
+                              @0x355970,
+                              @0x3A6882,
+                              @0x8BACCD,
+                              
+                              @0x39C3EE,
+                              @0xFFCEDD,
+                              @0xDE8679];
     
     int step=0;
     for (NSDictionary *dic in jsonArray) {

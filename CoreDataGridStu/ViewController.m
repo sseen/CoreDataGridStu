@@ -79,7 +79,7 @@ float pkWidth = 200;
     
 
     self.delDatasource.configureCellBlock = ^(UICollectionViewCell *cell, NSIndexPath *indexPath, Course* model) {
-
+        
         UILabel *lblTitle = [cell viewWithTag:1001];
         if ([model isKindOfClass:[Course class]]) {
             lblTitle.text = [NSString stringWithFormat:@"%@ %@",model.name, model.rooms];

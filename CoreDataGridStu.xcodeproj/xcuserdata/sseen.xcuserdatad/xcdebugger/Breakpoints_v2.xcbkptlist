@@ -106,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataGridStu/AppDelegate.m"
-            timestampString = "500985753.683921"
+            timestampString = "501042937.345926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "-importJSONSeedData"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-fetchedResultsController"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataGridStu/AppDelegate.m"
-            timestampString = "500985753.683921"
+            timestampString = "501042937.345926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "-importJSONSeedData"
             landmarkType = "7">
          </BreakpointContent>
@@ -144,6 +144,22 @@
             startingLineNumber = "28"
             endingLineNumber = "28"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoreDataGridStu/ViewController.m"
+            timestampString = "501043358.755428"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "-fetchManyInfoUseTag:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
