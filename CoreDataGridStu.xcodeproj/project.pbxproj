@@ -46,8 +46,8 @@
 		926D5BB81CFD33AD00A1D074 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		926D5BBE1CFD347600A1D074 /* seed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = seed.json; sourceTree = SOURCE_ROOT; };
 		926D5BC01CFD37AE00A1D074 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		926D5BC21CFD398900A1D074 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
-		926D5BC31CFD398900A1D074 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
+		926D5BC21CFD398900A1D074 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataStack.h; path = CoreDataGridStu/CoreDataStack.h; sourceTree = "<group>"; };
+		926D5BC31CFD398900A1D074 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataStack.m; path = CoreDataGridStu/CoreDataStack.m; sourceTree = "<group>"; };
 		926D5BC61CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Curriculum_Finder.xcdatamodel; sourceTree = "<group>"; };
 		926D5BC81CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeekOfYear+CoreDataProperties.h"; sourceTree = "<group>"; };
 		926D5BC91CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WeekOfYear+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 		92764B1E1DDB2EA900F4F00E /* Curriculum_Finder 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Curriculum_Finder 2.xcdatamodel"; sourceTree = "<group>"; };
 		92764B201DDB315500F4F00E /* WeekOfYear+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WeekOfYear+CoreDataClass.h"; sourceTree = "<group>"; };
 		92764B211DDB315500F4F00E /* WeekOfYear+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WeekOfYear+CoreDataClass.m"; sourceTree = "<group>"; };
-		928828D51DDB033200C350D2 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		928828D51DDB033200C350D2 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ../PrefixHeader.pch; sourceTree = "<group>"; };
 		928828D61DDB22F300C350D2 /* Course+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Course+CoreDataClass.h"; sourceTree = "<group>"; };
 		928828D71DDB22F300C350D2 /* Course+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Course+CoreDataClass.m"; sourceTree = "<group>"; };
 		929254E91DD5958F005E86CE /* TopWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopWeekdayView.h; sourceTree = "<group>"; };
@@ -92,26 +92,6 @@
 		926D5B9B1CFD33AD00A1D074 = {
 			isa = PBXGroup;
 			children = (
-				92764B201DDB315500F4F00E /* WeekOfYear+CoreDataClass.h */,
-				92764B211DDB315500F4F00E /* WeekOfYear+CoreDataClass.m */,
-				928828D61DDB22F300C350D2 /* Course+CoreDataClass.h */,
-				928828D71DDB22F300C350D2 /* Course+CoreDataClass.m */,
-				928828D51DDB033200C350D2 /* PrefixHeader.pch */,
-				929254F61DD5B1BD005E86CE /* SNOnePixelColumnView.h */,
-				929254F71DD5B1BD005E86CE /* SNOnePixelColumnView.m */,
-				929254F31DD5AA14005E86CE /* SNOnePixelLineView.h */,
-				929254F41DD5AA14005E86CE /* SNOnePixelLineView.m */,
-				929254EE1DD595AF005E86CE /* LeftHourView.h */,
-				929254EF1DD595AF005E86CE /* LeftHourView.m */,
-				929254F01DD595AF005E86CE /* LeftHourView.xib */,
-				929254E91DD5958F005E86CE /* TopWeekdayView.h */,
-				929254EA1DD5958F005E86CE /* TopWeekdayView.m */,
-				929254EB1DD5958F005E86CE /* TopWeekdayView.xib */,
-				926D5BC81CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.h */,
-				926D5BC91CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.m */,
-				926D5BCC1CFD61BA00A1D074 /* Course+CoreDataProperties.h */,
-				926D5BCD1CFD61BA00A1D074 /* Course+CoreDataProperties.m */,
-				926D5BC01CFD37AE00A1D074 /* CoreData.framework */,
 				926D5BA61CFD33AD00A1D074 /* CoreDataGridStu */,
 				926D5BA51CFD33AD00A1D074 /* Products */,
 			);
@@ -128,25 +108,12 @@
 		926D5BA61CFD33AD00A1D074 /* CoreDataGridStu */ = {
 			isa = PBXGroup;
 			children = (
-				92A16BB41D00343000F24A27 /* SF-UI-Text-Light.otf */,
-				92A16BB61D00345900F24A27 /* SF-UI-Display-Thin.otf */,
-				926D5BBE1CFD347600A1D074 /* seed.json */,
-				926D5BAA1CFD33AD00A1D074 /* AppDelegate.h */,
-				926D5BAB1CFD33AD00A1D074 /* AppDelegate.m */,
-				926D5BAD1CFD33AD00A1D074 /* ViewController.h */,
-				926D5BAE1CFD33AD00A1D074 /* ViewController.m */,
-				92AA13D21DD1F009005A7C10 /* SNTimeTableDataSource.h */,
-				92AA13D31DD1F009005A7C10 /* SNTimeTableDataSource.m */,
-				92D34F0A1DD31834009843A5 /* SNTimeTableFlowLayout.h */,
-				92D34F0B1DD31834009843A5 /* SNTimeTableFlowLayout.m */,
-				926D5BB01CFD33AD00A1D074 /* Main.storyboard */,
-				926D5BB31CFD33AD00A1D074 /* Assets.xcassets */,
-				926D5BB51CFD33AD00A1D074 /* LaunchScreen.storyboard */,
-				926D5BB81CFD33AD00A1D074 /* Info.plist */,
+				929DA3EA1DE93E2500797577 /* model */,
+				929DA3E91DE93DF400797577 /* viewcontroller */,
+				929DA3E81DE93DD100797577 /* frameworks */,
+				929DA3E71DE93DC100797577 /* view */,
+				929DA3E61DE93D6400797577 /* coreData */,
 				926D5BA71CFD33AD00A1D074 /* Supporting Files */,
-				926D5BC21CFD398900A1D074 /* CoreDataStack.h */,
-				926D5BC31CFD398900A1D074 /* CoreDataStack.m */,
-				926D5BC51CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodeld */,
 			);
 			path = CoreDataGridStu;
 			sourceTree = "<group>";
@@ -154,9 +121,85 @@
 		926D5BA71CFD33AD00A1D074 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				92A16BB41D00343000F24A27 /* SF-UI-Text-Light.otf */,
+				92A16BB61D00345900F24A27 /* SF-UI-Display-Thin.otf */,
+				928828D51DDB033200C350D2 /* PrefixHeader.pch */,
+				926D5BBE1CFD347600A1D074 /* seed.json */,
+				926D5BAA1CFD33AD00A1D074 /* AppDelegate.h */,
+				926D5BAB1CFD33AD00A1D074 /* AppDelegate.m */,
+				926D5BB01CFD33AD00A1D074 /* Main.storyboard */,
+				926D5BB31CFD33AD00A1D074 /* Assets.xcassets */,
+				926D5BB51CFD33AD00A1D074 /* LaunchScreen.storyboard */,
+				926D5BB81CFD33AD00A1D074 /* Info.plist */,
 				926D5BA81CFD33AD00A1D074 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		929DA3E61DE93D6400797577 /* coreData */ = {
+			isa = PBXGroup;
+			children = (
+				92764B201DDB315500F4F00E /* WeekOfYear+CoreDataClass.h */,
+				92764B211DDB315500F4F00E /* WeekOfYear+CoreDataClass.m */,
+				928828D61DDB22F300C350D2 /* Course+CoreDataClass.h */,
+				928828D71DDB22F300C350D2 /* Course+CoreDataClass.m */,
+				926D5BC81CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.h */,
+				926D5BC91CFD61BA00A1D074 /* WeekOfYear+CoreDataProperties.m */,
+				926D5BCC1CFD61BA00A1D074 /* Course+CoreDataProperties.h */,
+				926D5BCD1CFD61BA00A1D074 /* Course+CoreDataProperties.m */,
+				926D5BC21CFD398900A1D074 /* CoreDataStack.h */,
+				926D5BC31CFD398900A1D074 /* CoreDataStack.m */,
+				926D5BC51CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodeld */,
+			);
+			name = coreData;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		929DA3E71DE93DC100797577 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				929254F61DD5B1BD005E86CE /* SNOnePixelColumnView.h */,
+				929254F71DD5B1BD005E86CE /* SNOnePixelColumnView.m */,
+				929254F31DD5AA14005E86CE /* SNOnePixelLineView.h */,
+				929254F41DD5AA14005E86CE /* SNOnePixelLineView.m */,
+				929254EE1DD595AF005E86CE /* LeftHourView.h */,
+				929254EF1DD595AF005E86CE /* LeftHourView.m */,
+				929254F01DD595AF005E86CE /* LeftHourView.xib */,
+				929254E91DD5958F005E86CE /* TopWeekdayView.h */,
+				929254EA1DD5958F005E86CE /* TopWeekdayView.m */,
+				929254EB1DD5958F005E86CE /* TopWeekdayView.xib */,
+			);
+			name = view;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		929DA3E81DE93DD100797577 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				926D5BC01CFD37AE00A1D074 /* CoreData.framework */,
+			);
+			name = frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		929DA3E91DE93DF400797577 /* viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				926D5BAD1CFD33AD00A1D074 /* ViewController.h */,
+				926D5BAE1CFD33AD00A1D074 /* ViewController.m */,
+			);
+			name = viewcontroller;
+			sourceTree = "<group>";
+		};
+		929DA3EA1DE93E2500797577 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				92AA13D21DD1F009005A7C10 /* SNTimeTableDataSource.h */,
+				92AA13D31DD1F009005A7C10 /* SNTimeTableDataSource.m */,
+				92D34F0A1DD31834009843A5 /* SNTimeTableFlowLayout.h */,
+				92D34F0B1DD31834009843A5 /* SNTimeTableFlowLayout.m */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,7 +464,8 @@
 				926D5BC61CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodel */,
 			);
 			currentVersion = 92764B1E1DDB2EA900F4F00E /* Curriculum_Finder 2.xcdatamodel */;
-			path = Curriculum_Finder.xcdatamodeld;
+			name = Curriculum_Finder.xcdatamodeld;
+			path = CoreDataGridStu/Curriculum_Finder.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
