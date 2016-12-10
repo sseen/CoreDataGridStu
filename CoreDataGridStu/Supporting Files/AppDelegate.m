@@ -53,7 +53,7 @@
                                                              options:NSJSONReadingAllowFragments
                                                                error:&error];
     NSArray *jsonArray = jsonDict[@"activitys"];
-    NSMutableArray *m_array = [NSMutableArray arrayWithArray:jsonArray];
+    // NSMutableArray *m_array = [NSMutableArray arrayWithArray:jsonArray];
     
     // 6 combine group from dark to light
 //    NSArray *colorPalette = @[@0xFD6461,@0xF7A650,@0x71CA58,@0x51BAF2,@0xD08CE0,@0xA5A5A7,@0xFD7B78,
@@ -86,32 +86,56 @@
 //                              @0x48A0AC,
 //                              @0x7DDDCC,
 //                              @0xA1E9C2];
-    
+//    
+//    NSArray *colorPalette = @[
+//                              @0xCA5898,
+//                              @0xDD65A0,
+//                              @0xFD7DAC,
+//                              
+//                              @0x1A9AEA,
+//                              @0x1FB0EC,
+//                              @0x4BD7EE,
+//
+//                              @0x48A0AC,
+//                              @0x7DDDCC,
+//                              @0xA1E9C2,
+//                              
+//                              @0xFD9A73,
+//                              @0xFDAE87,
+//                              @0xFDCA96,
+//                              
+//                              @0x355970,
+//                              @0x3A6882,
+//                              @0x8BACCD,
+//                              
+//                              @0x39C3EE,
+//                              @0xFFCEDD,
+//                              @0xDE8679];
     NSArray *colorPalette = @[
                               @0xCA5898,
                               @0xDD65A0,
                               @0xFD7DAC,
-                              
+
                               @0x1A9AEA,
                               @0x1FB0EC,
                               @0x4BD7EE,
-                              
+
                               @0x48A0AC,
                               @0x7DDDCC,
                               @0xA1E9C2,
-                              
+
                               @0xFD9A73,
                               @0xFDAE87,
                               @0xFDCA96,
-                              
-                              @0x355970,
-                              @0x3A6882,
-                              @0x8BACCD,
-                              
+
+                              @0x5E548E,
+                              @0x9F86C0,
+                              @0xBE95C4,
+
                               @0x39C3EE,
-                              @0xFFCEDD,
+                              @0x6DBEF1,
                               @0xDE8679];
-    
+
     int step=0;
     for (NSDictionary *dic in jsonArray) {
         NSArray *innerArray = dic[@"activities"];
