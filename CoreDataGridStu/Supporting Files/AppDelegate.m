@@ -14,6 +14,26 @@
 
 #import "WeekOfYear+CoreDataProperties.h"
 
+static const NSString *rootNode = @"LessonList";
+static const NSString *courseNode = @"";
+static const NSString *courseTime = @"skjc";
+static const NSString *courseName = @"kcmc";
+static const NSString *courseYear = @"xn";
+static const NSString *courseRoom = @"skdd";
+static const NSString *courseTeacher = @"";
+static const NSString *courseWeekDay = @"xq";
+static const NSString *courseWeekOfYear = @"skzc";
+
+static const NSString *hai_rootNode = @"activitys";
+static const NSString *hai_courseNode = @"activities";
+static const NSString *hai_courseTime = @"time";
+static const NSString *hai_CourseName = @"course_name";
+static const NSString *hai_courseYear = @"year";
+static const NSString *hai_courseRoom = @"rooms";
+static const NSString *hai_courseTeacher = @"tearchers";
+static const NSString *hai_courseWeekDay = @"weekday";
+static const NSString *hai_courseWeekOfYear = @"week_of_year";
+
 @interface AppDelegate ()
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -37,80 +57,63 @@
     NSError *error;
     NSInteger results = [_coreDataStack.context countForFetchRequest:fetchRequest error:&error];
     
-    if (results == 0) {
+//    if (results == 0) {
         [self importJSONSeedData];
-    }
+//    }
 }
 
 - (void)importJSONSeedData {
     NSURL *jsonURL = [[NSBundle mainBundle] URLForResource:@"seed" withExtension:@"json"];
     NSData *jsonData = [NSData dataWithContentsOfURL:jsonURL];
-    NSEntityDescription *courseEntity = [NSEntityDescription entityForName:@"Course" inManagedObjectContext:self.coreDataStack.context];
-    NSEntityDescription *weekOfYearEntity = [NSEntityDescription entityForName:@"WeekOfYear" inManagedObjectContext:self.coreDataStack.context];
-    
     NSError *error;
     NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
                                                              options:NSJSONReadingAllowFragments
                                                                error:&error];
-    NSArray *jsonArray = jsonDict[@"activitys"];
-    // NSMutableArray *m_array = [NSMutableArray arrayWithArray:jsonArray];
+    NSArray *jsonArrayOrigin = jsonDict[rootNode];
+    // other data to hai
+    NSMutableDictionary *convertedDic = [NSMutableDictionary dictionary];
+    NSMutableArray *converteArray = [NSMutableArray array];
     
-    // 6 combine group from dark to light
-//    NSArray *colorPalette = @[@0xFD6461,@0xF7A650,@0x71CA58,@0x51BAF2,@0xD08CE0,@0xA5A5A7,@0xFD7B78,
-//                              @0xF8B36A,
-//                              @0x86D271,
-//                              @0x6BC4F4,
-//                              @0xD79DE4,
-//                              @0xB2B2B4,
-//                              @0xFD9A98,
-//                              @0xFAC58D,
-//                              @0xA2DC92,
-//                              @0x51BAF2,
-//                              @0xC4C4C6];
-// second choise
-//    NSArray *colorPalette = @[@0x1A9AEA,
-//                              @0x1FB0EC,
-//                              @0x39C3EE,
-//                              @0x4BD7EE,
-//                              @0xFFCEDD,
-//                              @0xCA5898,
-//                              @0xDD65A0,
-//                              @0xFD7DAC,
-//                              @0x355970,
-//                              @0x3A6882,
-//                              @0x8BACCD,
-//                              @0xDE8679,
-//                              @0xFD9A73,
-//                              @0xFDAE87,
-//                              @0xFDCA96,
-//                              @0x48A0AC,
-//                              @0x7DDDCC,
-//                              @0xA1E9C2];
-//    
-//    NSArray *colorPalette = @[
-//                              @0xCA5898,
-//                              @0xDD65A0,
-//                              @0xFD7DAC,
-//                              
-//                              @0x1A9AEA,
-//                              @0x1FB0EC,
-//                              @0x4BD7EE,
-//
-//                              @0x48A0AC,
-//                              @0x7DDDCC,
-//                              @0xA1E9C2,
-//                              
-//                              @0xFD9A73,
-//                              @0xFDAE87,
-//                              @0xFDCA96,
-//                              
-//                              @0x355970,
-//                              @0x3A6882,
-//                              @0x8BACCD,
-//                              
-//                              @0x39C3EE,
-//                              @0xFFCEDD,
-//                              @0xDE8679];
+    [jsonArrayOrigin enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableDictionary *mDic = [NSMutableDictionary dictionaryWithDictionary: @{hai_CourseName:[obj objectForKey:courseName]}];
+        NSMutableArray *mArray = [NSMutableArray arrayWithObject: @{hai_courseYear:
+                                                                        @([ [ [obj objectForKey:courseYear]
+                                                                             substringToIndex:4 ]
+                                                                           intValue ]) }];
+        
+        __block NSNumber *weekDay = @-1;
+        __block NSMutableString *jcStr = [NSMutableString string];
+        NSArray *timeArray = [(NSString *)[obj objectForKey:courseTime] componentsSeparatedByString:@","];
+        [timeArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSArray *oneWeekTime = [obj componentsSeparatedByString:@"_"];
+            weekDay = @([oneWeekTime[0] intValue]);
+            [jcStr appendString:oneWeekTime[1]];
+            [jcStr appendString:@"-"];
+        }];
+        if (timeArray.count > 0) {
+            [jcStr deleteCharactersInRange:NSMakeRange(jcStr.length-1, 1)];
+        }
+        
+        [mArray addObject:@{hai_courseTime:jcStr}];
+        [mArray addObject:@{hai_courseWeekDay:weekDay}];
+        
+        
+        // array dic
+        [mArray addObject:@[ @{hai_courseRoom:[obj objectForKey:courseWeekDay]} ]];
+        [mArray addObject:@[ @{hai_courseWeekOfYear: [ [obj objectForKey:courseWeekOfYear] componentsSeparatedByString:@","] } ]];
+        
+        [mDic setObject:mArray forKey:hai_courseNode];
+        [converteArray addObject:mDic];
+    }];
+    [convertedDic setObject:converteArray forKey:hai_rootNode];
+    
+    
+    // hai data solve
+    NSArray *jsonArray = convertedDic[hai_rootNode];
+    NSEntityDescription *courseEntity = [NSEntityDescription entityForName:@"Course" inManagedObjectContext:self.coreDataStack.context];
+    NSEntityDescription *weekOfYearEntity = [NSEntityDescription entityForName:@"WeekOfYear" inManagedObjectContext:self.coreDataStack.context];
+    
+    
     NSArray *colorPalette = @[
                               @0xCA5898,
                               @0xDD65A0,

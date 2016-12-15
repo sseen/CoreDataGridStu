@@ -21,6 +21,7 @@
 		92764B1F1DDB2F5B00F4F00E /* Curriculum_Finder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 926D5BC51CFD5C8F00A1D074 /* Curriculum_Finder.xcdatamodeld */; };
 		92764B221DDB315500F4F00E /* WeekOfYear+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 92764B211DDB315500F4F00E /* WeekOfYear+CoreDataClass.m */; };
 		928828D81DDB22F300C350D2 /* Course+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 928828D71DDB22F300C350D2 /* Course+CoreDataClass.m */; };
+		928F4FCF1E02976B00F4A4B0 /* seed的副本.json in Resources */ = {isa = PBXBuildFile; fileRef = 928F4FCE1E02976B00F4A4B0 /* seed的副本.json */; };
 		929254EC1DD5958F005E86CE /* TopWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 929254EA1DD5958F005E86CE /* TopWeekdayView.m */; };
 		929254ED1DD5958F005E86CE /* TopWeekdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 929254EB1DD5958F005E86CE /* TopWeekdayView.xib */; };
 		929254F11DD595AF005E86CE /* LeftHourView.m in Sources */ = {isa = PBXBuildFile; fileRef = 929254EF1DD595AF005E86CE /* LeftHourView.m */; };
@@ -59,6 +60,7 @@
 		928828D51DDB033200C350D2 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		928828D61DDB22F300C350D2 /* Course+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Course+CoreDataClass.h"; sourceTree = "<group>"; };
 		928828D71DDB22F300C350D2 /* Course+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Course+CoreDataClass.m"; sourceTree = "<group>"; };
+		928F4FCE1E02976B00F4A4B0 /* seed的副本.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "seed的副本.json"; sourceTree = "<group>"; };
 		929254E91DD5958F005E86CE /* TopWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopWeekdayView.h; sourceTree = "<group>"; };
 		929254EA1DD5958F005E86CE /* TopWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopWeekdayView.m; sourceTree = "<group>"; };
 		929254EB1DD5958F005E86CE /* TopWeekdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopWeekdayView.xib; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		926D5BA71CFD33AD00A1D074 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				928F4FCE1E02976B00F4A4B0 /* seed的副本.json */,
 				926D5BAA1CFD33AD00A1D074 /* AppDelegate.h */,
 				926D5BAB1CFD33AD00A1D074 /* AppDelegate.m */,
 				926D5BB31CFD33AD00A1D074 /* Assets.xcassets */,
@@ -263,6 +266,7 @@
 				926D5BBF1CFD347600A1D074 /* seed.json in Resources */,
 				929254F21DD595AF005E86CE /* LeftHourView.xib in Resources */,
 				92A16BB71D00345900F24A27 /* SF-UI-Display-Thin.otf in Resources */,
+				928F4FCF1E02976B00F4A4B0 /* seed的副本.json in Resources */,
 				926D5BB21CFD33AD00A1D074 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

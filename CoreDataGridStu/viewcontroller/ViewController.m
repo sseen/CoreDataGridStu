@@ -93,7 +93,7 @@ float pkWidth = 200;
     
     __weak ViewController *wSelf = self;
     self.delDatasource.configureHeaderViewBlock = ^(UICollectionReusableView *headerView, NSString *kind, NSIndexPath *indexPath) {
-        if ([kind isEqualToString:@"DayHeaderView"]) {
+            if ([kind isEqualToString:@"DayHeaderView"]) {
             TopWeekdayView *topView = (TopWeekdayView *)headerView;
             [topView setWeekNow:(int)_nowSelected + 9 year:(int)wSelf.weekOfNow.year index:(int)indexPath.item];
         }else if ([kind isEqualToString:@"HourHeaderView"]) {
