@@ -57,9 +57,9 @@ static const NSString *hai_courseWeekOfYear = @"week_of_year";
     NSError *error;
     NSInteger results = [_coreDataStack.context countForFetchRequest:fetchRequest error:&error];
     
-//    if (results == 0) {
+    if (results == 0) {
         [self importJSONSeedData];
-//    }
+    }
 }
 
 - (void)importJSONSeedData {
@@ -73,6 +73,18 @@ static const NSString *hai_courseWeekOfYear = @"week_of_year";
     // other data to hai
     NSMutableDictionary *convertedDic = [NSMutableDictionary dictionary];
     NSMutableArray *converteArray = [NSMutableArray array];
+    
+    NSString *startDateStr = jsonDict[@"startDate"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd"];
+    NSDate *startDate = [dateFormatter dateFromString:startDateStr];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *weekdayComponents =
+    [gregorian components:(NSCalendarUnitWeekOfYear) fromDate:startDate];
+    NSInteger weekOfyear = [weekdayComponents weekOfYear];
+    
+    
     
     [jsonArrayOrigin enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSMutableDictionary *mDic = [NSMutableDictionary dictionaryWithDictionary: @{hai_CourseName:[obj objectForKey:courseName]}];
@@ -100,7 +112,13 @@ static const NSString *hai_courseWeekOfYear = @"week_of_year";
         
         // array dic
         [mDic_sub addEntriesFromDictionary:@{hai_courseRoom:@[ [obj objectForKey:courseRoom] ] }] ;
-        [mDic_sub addEntriesFromDictionary:@{hai_courseWeekOfYear: [ [obj objectForKey:courseWeekOfYear] componentsSeparatedByString:@","] } ];
+        // convert the human weekofyear to national
+        NSArray *nationalWeekOfYear = [ [obj objectForKey:courseWeekOfYear] componentsSeparatedByString:@","];
+        NSMutableArray *humanWeekOfYear = [NSMutableArray array];
+        [nationalWeekOfYear enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+             [humanWeekOfYear addObject: @([(NSNumber *)obj intValue] + weekOfyear -1)];
+        }];
+        [mDic_sub addEntriesFromDictionary:@{hai_courseWeekOfYear:  humanWeekOfYear} ];
         
         [mDic setObject:@[mDic_sub] forKey:hai_courseNode];
         [converteArray addObject:mDic];
@@ -147,7 +165,7 @@ static const NSString *hai_courseWeekOfYear = @"week_of_year";
         NSString *name = dic[hai_CourseName];
         NSNumber *colorFloat = nameDic[name];
         if ( !nameDic[name] ) {
-            colorFloat = colorPalette[ step++ % colorPalette.count];
+            colorFloat = colorPalette[ step++ % colorPalette.count]; // 微量循环
             nameDic[name] = colorFloat;
         }
         
@@ -183,9 +201,9 @@ static const NSString *hai_courseWeekOfYear = @"week_of_year";
                     
                     NSError *error;
                     [_coreDataStack saveContext];
-                    NSLog(@"week of year: %@", error);
+                    // NSLog(@"week of year: %@", error);
                     [_fetchedResultsController performFetch:&error];
-                    NSLog(@"week of year fetch : %@", error);
+                    // NSLog(@"week of year fetch : %@", error);
                     
                 }
                 

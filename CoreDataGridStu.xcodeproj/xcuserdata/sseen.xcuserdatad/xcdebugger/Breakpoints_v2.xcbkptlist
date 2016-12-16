@@ -166,46 +166,46 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataGridStu/Supporting Files/AppDelegate.m"
-            timestampString = "503478119.420819"
+            timestampString = "503564615.19831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "-importJSONSeedData"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[AppDelegate importJSONSeedData]"
                   moduleName = "CoreDataGridStu"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zyang/SNProject/CoreDataGridStu/CoreDataGridStu/Supporting%20Files/AppDelegate.m"
-                  timestampString = "503488334.860283"
+                  timestampString = "503573203.1914"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "486">
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "789">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__33-[AppDelegate importJSONSeedData]_block_invoke"
                   moduleName = "CoreDataGridStu"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zyang/SNProject/CoreDataGridStu/CoreDataGridStu/Supporting%20Files/AppDelegate.m"
-                  timestampString = "503488334.863153"
+                  timestampString = "503573203.193672"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
                   offsetFromSymbolStart = "32">
                </Location>
             </Locations>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataGridStu/Supporting Files/AppDelegate.m"
-            timestampString = "503544438.214982"
+            timestampString = "503566550.324844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "-importJSONSeedData"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataGridStu/Supporting Files/AppDelegate.m"
-            timestampString = "503545996.092596"
+            timestampString = "503566550.324844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "-importJSONSeedData"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataGridStu/Supporting Files/AppDelegate.m"
-            timestampString = "503548005.35749"
+            timestampString = "503566550.324844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "-importJSONSeedData"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreDataGridStu/Supporting Files/AppDelegate.m"
-            timestampString = "503548397.569392"
+            timestampString = "503566550.324844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-importJSONSeedData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoreDataGridStu/viewcontroller/ViewController.m"
+            timestampString = "503571402.984978"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoreDataGridStu/Supporting Files/AppDelegate.m"
+            timestampString = "503572894.691636"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "-importJSONSeedData"
             landmarkType = "7">
          </BreakpointContent>
