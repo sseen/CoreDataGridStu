@@ -76,7 +76,7 @@ static const NSString *hai_courseWeekOfYear = @"week_of_year";
     
     [jsonArrayOrigin enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSMutableDictionary *mDic = [NSMutableDictionary dictionaryWithDictionary: @{hai_CourseName:[obj objectForKey:courseName]}];
-        NSMutableArray *mArray = [NSMutableArray arrayWithObject: @{hai_courseYear:
+        NSMutableDictionary *mDic_sub = [NSMutableDictionary dictionaryWithDictionary: @{hai_courseYear:
                                                                         @([ [ [obj objectForKey:courseYear]
                                                                              substringToIndex:4 ]
                                                                            intValue ]) }];
@@ -94,15 +94,15 @@ static const NSString *hai_courseWeekOfYear = @"week_of_year";
             [jcStr deleteCharactersInRange:NSMakeRange(jcStr.length-1, 1)];
         }
         
-        [mArray addObject:@{hai_courseTime:jcStr}];
-        [mArray addObject:@{hai_courseWeekDay:weekDay}];
+        [mDic_sub addEntriesFromDictionary:@{hai_courseTime:jcStr}];
+        [mDic_sub addEntriesFromDictionary:@{hai_courseWeekDay:weekDay}];
         
         
         // array dic
-        [mArray addObject:@[ @{hai_courseRoom:[obj objectForKey:courseWeekDay]} ]];
-        [mArray addObject:@[ @{hai_courseWeekOfYear: [ [obj objectForKey:courseWeekOfYear] componentsSeparatedByString:@","] } ]];
+        [mDic_sub addEntriesFromDictionary:@{hai_courseRoom:@[ [obj objectForKey:courseRoom] ] }] ;
+        [mDic_sub addEntriesFromDictionary:@{hai_courseWeekOfYear: [ [obj objectForKey:courseWeekOfYear] componentsSeparatedByString:@","] } ];
         
-        [mDic setObject:mArray forKey:hai_courseNode];
+        [mDic setObject:@[mDic_sub] forKey:hai_courseNode];
         [converteArray addObject:mDic];
     }];
     [convertedDic setObject:converteArray forKey:hai_rootNode];
@@ -112,7 +112,6 @@ static const NSString *hai_courseWeekOfYear = @"week_of_year";
     NSArray *jsonArray = convertedDic[hai_rootNode];
     NSEntityDescription *courseEntity = [NSEntityDescription entityForName:@"Course" inManagedObjectContext:self.coreDataStack.context];
     NSEntityDescription *weekOfYearEntity = [NSEntityDescription entityForName:@"WeekOfYear" inManagedObjectContext:self.coreDataStack.context];
-    
     
     NSArray *colorPalette = @[
                               @0xCA5898,
@@ -140,26 +139,34 @@ static const NSString *hai_courseWeekOfYear = @"week_of_year";
                               @0xDE8679];
 
     int step=0;
+    // same couse same color
+    NSMutableDictionary *nameDic = [NSMutableDictionary dictionary];
+    
     for (NSDictionary *dic in jsonArray) {
-        NSArray *innerArray = dic[@"activities"];
-        NSString *name = dic[@"course_name"];
-        NSNumber *colorFloat = colorPalette[step++];
+        NSArray *innerArray = dic[hai_courseNode];
+        NSString *name = dic[hai_CourseName];
+        NSNumber *colorFloat = nameDic[name];
+        if ( !nameDic[name] ) {
+            colorFloat = colorPalette[ step++ % colorPalette.count];
+            nameDic[name] = colorFloat;
+        }
+        
         // 有几条就插几条 相同课程的纪录
         for (NSDictionary *innerDic in innerArray) {
             
             Course *course = [[Course alloc] initWithEntity:courseEntity insertIntoManagedObjectContext:_coreDataStack.context];
             course.name = name;
-            NSString *time = innerDic[@"time"];
+            NSString *time = innerDic[hai_courseTime];
             course.timeStr = time;
             NSInteger intTime = [[time substringToIndex:[time rangeOfString:@"-"].location] integerValue];
             course.time = [NSNumber numberWithInteger:intTime];
             course.color = colorFloat;
-            course.year = innerDic[@"year"];
-            course.rooms = innerDic[@"rooms"][0];
-            course.teachers = innerDic[@"teachers"][0];
-            course.weekday = [NSNumber numberWithInteger:[innerDic[@"weekday"] integerValue]];
+            course.year = innerDic[hai_courseYear];
+            course.rooms = innerDic[hai_courseRoom][0];
+            course.teachers = innerDic[hai_courseTeacher][0];
+            course.weekday = [NSNumber numberWithInteger:[innerDic[hai_courseWeekDay] integerValue]];
             
-            NSArray *weekOfYearArray = innerDic[@"week_of_year"];
+            NSArray *weekOfYearArray = innerDic[hai_courseWeekOfYear];
             
             NSMutableOrderedSet *mutableOrderSet = [NSMutableOrderedSet orderedSet];
             for (NSString *item in weekOfYearArray) {
