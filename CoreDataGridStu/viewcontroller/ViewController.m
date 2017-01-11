@@ -35,6 +35,7 @@ float pkWidth = 200;
 @property (nonatomic, strong) NSMutableArray *weeksOfSeason;
 @property (nonatomic, strong) NSDateComponents *weekOfNow;
 @property (nonatomic, assign) NSInteger nowSelected;
+@property (nonatomic, assign) int humanWeek;
 
 @property (nonatomic, strong) SNTimeTableDataSource *delDatasource;
 @property (nonatomic, strong) SNTimeTableFlowLayout *delFlowLayout;
@@ -54,11 +55,6 @@ float pkWidth = 200;
     UIView *buttonsView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     self.btTitle = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     [self.btTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    NSString *strWeekOfYear = [NSString stringWithFormat:@"第%d周", (int)self.weekOfNow.weekOfYear - 9];
-    //初始化 picker
-    [_pvWeek selectRow:(int)_weekOfNow.weekOfYear-9-1 inComponent:1 animated:NO];
-    
-    [_btTitle setTitle:strWeekOfYear forState:UIControlStateNormal];
     [_btTitle addTarget:self action:@selector(ckTitle:) forControlEvents:UIControlEventTouchUpInside ];
     [buttonsView addSubview: _btTitle];
     self.navigationItem.titleView = buttonsView;
@@ -75,30 +71,32 @@ float pkWidth = 200;
     
     self.statusPickerVisible = NO;
     // 周必须是学期的周，也就是当前自然周减去开学的第一个自然周
+    self.nowSelected = [self todayWeekSelected];
     [self fetchManyInfoUseTag:(int)[self.weekOfNow weekOfYear]];
     
 
     self.delDatasource.configureCellBlock = ^(UICollectionViewCell *cell, NSIndexPath *indexPath, Course* model) {
         
         UILabel *lblTitle = [cell viewWithTag:1001];
-        if ([model isKindOfClass:[Course class]]) {
-            lblTitle.text = [NSString stringWithFormat:@"%@ %@",model.name, model.rooms];
-            cell.backgroundColor = UIColorFromRGB([model.color longValue]);
-        }else {
-            lblTitle.text = @"";
-            cell.backgroundColor = [UIColor colorWithRed:0.23 green:0.60 blue:0.85 alpha:0.4];
-        }
+        
+        lblTitle.text = [NSString stringWithFormat:@"%@ %@",model.name, model.rooms];
+        cell.backgroundColor = UIColorFromRGB([model.color longValue]);
 
     };
     
     __weak ViewController *wSelf = self;
     self.delDatasource.configureHeaderViewBlock = ^(UICollectionReusableView *headerView, NSString *kind, NSIndexPath *indexPath) {
-        if ([kind isEqualToString:@"DayHeaderView"]) {
-            TopWeekdayView *topView = (TopWeekdayView *)headerView;
-            [topView setWeekNow:(int)_nowSelected + 9 year:(int)wSelf.weekOfNow.year index:(int)indexPath.item];
-        }else if ([kind isEqualToString:@"HourHeaderView"]) {
-            LeftHourView *leftView = (LeftHourView *)headerView;
-            leftView.lblWeek.text = [NSString stringWithFormat:@"%2ld", indexPath.item + 1];
+            if ([kind isEqualToString:@"DayHeaderView"]) {
+                TopWeekdayView *topView = (TopWeekdayView *)headerView;
+                [topView setWeekNow:(int)_nowSelected + _humanWeek year:(int)wSelf.weekOfNow.year index:(int)indexPath.item];
+            }else if ([kind isEqualToString:@"HourHeaderView"]) {
+                LeftHourView *leftView = (LeftHourView *)headerView;
+            if (indexPath.item != 0) {
+                leftView.lblWeek.text = [NSString stringWithFormat:@"%2ld", indexPath.item ];
+            } else {
+                leftView.lblWeek.text = @"";
+            }
+            
         }
     };
     
@@ -112,21 +110,27 @@ float pkWidth = 200;
 - (NSDateComponents *)weekOfNow {
     if (!_weekOfNow) {
         NSDate *date = [NSDate date];
-        NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
-        NSDate *dateInLocalTimezone = [date dateByAddingTimeInterval:timeZoneSeconds];
-        NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-        calendar.minimumDaysInFirstWeek = 4;
-        NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitWeekOfYear|NSCalendarUnitWeekday fromDate:dateInLocalTimezone];
-        _weekOfNow = components;
-        self.nowSelected = _weekOfNow.weekOfYear - 9 - 25;
+        _weekOfNow = [self componentsFromDate:date];
+        self.nowSelected = _weekOfNow.weekOfYear;
     }
     return _weekOfNow;
 }
 - (NSMutableArray *)weeksOfSeason{
     if (!_weeksOfSeason) {
         [self fetchWeeks];
+    }else if (_weeksOfSeason.count <= 0) {
+        [self fetchWeeks];
     }
     return _weeksOfSeason;
+}
+
+- (int)humanWeek {
+    if (!_humanWeek) {
+        if (self.weeksOfSeason.count >0) {
+            _humanWeek =  [self.weeksOfSeason[0] intValue];
+        }
+    }
+    return _humanWeek;
 }
 
 - (void)fetchManyInfoUseTag:(int)weekOfYear {
@@ -144,6 +148,10 @@ float pkWidth = 200;
     for (Course *course in obj) {
         NSLog(@"%@\n", course.description);
     }
+    
+    NSString *strWeekOfYear = [NSString stringWithFormat:@"第%ld周", self.nowSelected + 1];
+    [_btTitle setTitle:strWeekOfYear forState:UIControlStateNormal];
+    [_pvWeek selectRow:_nowSelected inComponent:1 animated:NO];
     
     self.delDatasource.dataSource = [NSMutableArray arrayWithArray:obj];
     [self.collectionView reloadData];
@@ -214,7 +222,7 @@ float pkWidth = 200;
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSString *str = [NSString stringWithFormat:@"第%d周", [self.weeksOfSeason[row] intValue] - 9];
+    NSString *str = [NSString stringWithFormat:@"第%d周", [self.weeksOfSeason[row] intValue] - self.humanWeek + 1];
     if (component == 0) {
         if ( row == 0) {
             str = @"今天";
@@ -228,18 +236,49 @@ float pkWidth = 200;
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     _nowSelected = row;
     if (component == 1) {
-        [self fetchManyInfoUseTag:(int)row + 10];
-        [_btTitle setTitle:[NSString stringWithFormat:@"第%d周", (int)row + 1] forState:UIControlStateNormal];
+        [self fetchManyInfoUseTag:[self.weeksOfSeason[row] intValue]];
         [pickerView selectRow:1 inComponent:0 animated:YES];
     }else {
         // 今天
-        _nowSelected = _weekOfNow.weekOfYear-9;
+        _nowSelected = [self todayWeekSelected];
         if (row == 0) {
             [self fetchManyInfoUseTag:(int)self.weekOfNow.weekOfYear];
-            [_btTitle setTitle:[NSString stringWithFormat:@"第%d周", (int)_weekOfNow.weekOfYear-9] forState:UIControlStateNormal];
-            [pickerView selectRow:(int)_weekOfNow.weekOfYear-9-1 inComponent:1 animated:YES];
+            [pickerView selectRow:_nowSelected inComponent:1 animated:YES];
         }
     }
+}
+
+// 跨年处理
+- (NSInteger)todayWeekSelected {
+    NSInteger tmp = self.weekOfNow.weekOfYear - self.humanWeek;
+    if ( tmp  < 0 ) {
+        NSString *dateStr = [NSString stringWithFormat:@"%ld1231", _weekOfNow.year - 1];
+        
+        // Convert string to date object
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyyMMdd"];
+        NSDate *date = [dateFormat dateFromString:dateStr];
+        
+        // all weeks of last year
+        NSInteger allWeekOfLastYear = 53;
+        NSDateComponents *tmpDateComponents = [self componentsFromDate:date];
+        if (tmpDateComponents.weekOfYear == 1) {// 52 week
+            allWeekOfLastYear = 52;
+        }
+        
+        tmp = [self componentsFromDate:[NSDate date]].weekOfYear + allWeekOfLastYear - self.humanWeek;
+    }
+    
+    return tmp;
+}
+
+- (NSDateComponents *)componentsFromDate:(NSDate *)date {
+    NSTimeInterval timeZoneSeconds = [[NSTimeZone localTimeZone] secondsFromGMT];
+    NSDate *dateInLocalTimezone = [date dateByAddingTimeInterval:timeZoneSeconds];
+    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    // calendar.minimumDaysInFirstWeek = 4;
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitWeekOfYear|NSCalendarUnitWeekday fromDate:dateInLocalTimezone];
+    return components;
 }
 
 @end
