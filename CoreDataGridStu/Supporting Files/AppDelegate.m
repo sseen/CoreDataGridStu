@@ -84,8 +84,6 @@ static const NSString *hai_courseWeekOfYear = @"week_of_year";
     [gregorian components:(NSCalendarUnitWeekOfYear) fromDate:startDate];
     NSInteger weekOfyear = [weekdayComponents weekOfYear];
     
-    
-    
     [jsonArrayOrigin enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSMutableDictionary *mDic = [NSMutableDictionary dictionaryWithDictionary: @{hai_CourseName:[obj objectForKey:courseName]}];
         NSMutableDictionary *mDic_sub = [NSMutableDictionary dictionaryWithDictionary: @{hai_courseYear:
